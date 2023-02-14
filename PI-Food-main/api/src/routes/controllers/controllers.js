@@ -140,3 +140,28 @@ const recipeId = async (idRecipe) => {
         return error;
     }
 };
+
+
+// Mostrar dietas
+const showDiets = async () => {
+    const dietTypes = [
+        "gluten free", //
+        "ketogenic", //
+        "lacto ovo vegetarian", //
+        "vegan", //
+        "pescatarian", //
+        "paleolithic", //
+        "primal",//
+        "fodmap friendly", //
+        "whole 30", //
+        "dairy free", //
+    ];
+    dietTypes.forEach((diet) => {
+        Diets.findOrCreate({
+            where: {
+                name: diet
+            }
+        })
+    })
+    return Diets.findAll();
+}
