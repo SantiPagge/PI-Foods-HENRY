@@ -45,7 +45,7 @@ const searchInApi = async () => {
                 id: element.id,
                 name: element.title,
                 summary: element.summary,
-                healtScore: element.healtScore,
+                healthScore: element.healthScore,
                 image: element.image,
                 dishTypes: element.dishTypes?.map(element => element),
                 diets: element.diets?.map(element => element),
@@ -78,7 +78,7 @@ const searchInDb = async () => {
                 id: element.id,
                 name: element.name,
                 summary: element.summary,
-                healtScore: element.healtScore,
+                healthScore: element.healthScore,
                 image: element.image,
                 steps: element.steps,
                 diets: element.diets?.map(element => element.name)
@@ -164,4 +164,42 @@ const showDiets = async () => {
         })
     })
     return Diets.findAll();
-}
+};
+
+const postRecipe = async (objRecipe) => {
+    try {
+        const { name, summary, healthScore, steps, image, dishTypes, diets } = objRecipe;
+        const recipe = {
+            name,
+            summary,
+            healthScore,
+            steps,
+            image,
+            dishTypes
+        };
+
+        const dietInfo = await Diets.findAll({
+            where: {
+                name: diets
+            }
+        });
+        const createRecipe = await Recipe.create(recipe);
+
+        createRecipe.addDiets(dietInfo);
+
+        return Recipe.findAll();
+
+    } catch (error) {
+        return error;
+    }
+};
+
+module.exports = {
+    searchInApi,
+    searchInDb,
+    dbApi,
+    queryRecipe,
+    recipeId,
+    showDiets,
+    postRecipe
+};
