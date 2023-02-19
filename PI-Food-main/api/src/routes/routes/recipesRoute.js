@@ -1,9 +1,10 @@
-const { router } = require('express').Router();
+const { Router } = require('express');
 const { queryRecipe, recipeId, postRecipe } = require('../controllers/controllers');
 const { Recipe, Diets } = require('../../db');
 
+const recipesRoute = Router();
 
-router.get('/', async (req, res) => {
+recipesRoute.get('/', async (req, res) => {
     const { name } = req.query;
     try {
         if(name){
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+recipesRoute.post('/', async (req, res) => {
   try {
     const objRecipe = req.body;
 
@@ -32,7 +33,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+recipesRoute.get('/', async (req, res) => {
     const { idRecipe } = req.params;
     try {
         const idReceta = await recipeId(idRecipe);
@@ -42,7 +43,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+recipesRoute.put('/:id', async (req, res) => {
     const { id } = req.params;
     const { name, summary, steps, healthScore, diets, image } = req.body;
     try {
@@ -89,4 +90,4 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = recipesRoute;
