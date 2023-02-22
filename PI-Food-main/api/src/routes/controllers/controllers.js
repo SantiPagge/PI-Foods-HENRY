@@ -36,7 +36,7 @@ const { Recipe, Diets } = require('../../db');
 const searchInApi = async () => {
     try {
         const searchInApiRequest = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
-        // const BuscarenApi = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=66aca8f51d11492e84ea329eccc1bd71&addRecipeInformation=true&number=100`,
+        // const BuscarenApi = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=447dc9bae5d14e9f9ca46069530aeadb&addRecipeInformation=true&number=100`,
     //   { headers: { "Accept-Encoding": "gzip,deflate,compress" }}
     //  )      PARA LOS LLAMADOS LIMITADOS, USAR ESTO PARA LA CORRECCION
 
