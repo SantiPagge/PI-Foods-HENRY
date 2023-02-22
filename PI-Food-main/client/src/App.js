@@ -8,7 +8,7 @@ import { Home } from './Components/views/Home/Home'
 import { Nav } from './Components/Nav/Nav'
 
 // axios.defaults.baseURL = "https://pi-food-production-3adc.up.railway.app/";
-axios.defaults.baseURL = 'http://localhost:5432';
+axios.defaults.baseURL = 'http://localhost:3001';
 
 function App() {
   const location = useLocation()

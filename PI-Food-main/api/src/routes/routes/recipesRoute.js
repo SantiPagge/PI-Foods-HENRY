@@ -23,9 +23,7 @@ recipesRoute.post('/', async (req, res) => {
   try {
     const objRecipe = req.body;
 
-    if(!objRecipe) res.status(404).send('Missing info.');
-
-    const newRecipe = await postRecipe();
+    const newRecipe = await postRecipe(objRecipe);
 
     res.status(201).send(newRecipe);
   } catch (error) {
@@ -33,13 +31,13 @@ recipesRoute.post('/', async (req, res) => {
   }
 });
 
-recipesRoute.get('/', async (req, res) => {
-    const { idRecipe } = req.params;
+recipesRoute.get('/:id', async (req, res) => {
+    const { id } = req.params;
     try {
-        const idReceta = await recipeId(idRecipe);
+        const idReceta = await recipeId(id);
         res.status(200).json(idReceta);
     } catch (error) {
-        res.status(404).send(error);
+        res.status(404).json(error.message);
     }
 });
 

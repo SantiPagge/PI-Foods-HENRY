@@ -1,18 +1,4 @@
-export const TRAER_RECETAS = 'TRAER_RECETAS';
-export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-export const TRAER_DIETAS = 'TRAER_DIETAS';
-export const BUSCAR_RECETA = 'BUSCAR_RECETA';
-export const FILTRAR_DIETAS = 'FILTRAR_DIETAS';
-export const ORDENAR_POR_NOMBRE = 'ORDENAR_POR_NOMBRE';
-export const CAMBIAR_PAGINA = 'CAMBIAR_PAGINA';
-export const FILTRO_SCORE = 'FILTRO_SCORE';
-export const POST_RECIPE = 'POST_RECIPE';
-export const RECETA_ID = 'RECETA_ID';
-export const VACIAR_ID = 'VACIAR_ID';
-export const FILTRO_CREADO = 'FILTRO_CREADO';
-export const MODIFICAR_RECETA = "MODIFICAR_RECETA";
-export const SELECCIONADAS = "SELECCIONADAS";
-export const SEARCH = "SEARCH";
+import { TRAER_RECETAS, VACIAR_ID, CAMBIAR_PAGINA, SEARCH, SELECCIONADAS, TRAER_DIETAS, FILTRAR_DIETAS, ORDENAR_POR_NOMBRE, FILTRO_SCORE, RECETA_ID } from './action-types';
 
 const initialState = {
     recetas: [],
@@ -27,44 +13,44 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'TRAER_RECETAS':
+        case TRAER_RECETAS:
             return {
                 ...state,
                 recetas: action.payload,
                 recetas2: action.payload
             }
-        case 'MODIFICAR_RECETA':
+        case MODIFICAR_RECETA:
             return {
                 ...state,
                 recetas: action.payload,
                 recetas2: action.payload
             }
-        case 'RECETA_ID':
+        case RECETA_ID:
             return {
                 ...state,
                 recetaId: action.payload
             }
-        case 'VACIAR_ID':
+        case VACIAR_ID:
             return {
                 ...state,
                 recetaId: []
             }
-        case 'TRAER_DIETAS':
+        case TRAER_DIETAS:
             return {
                 ...state,
                 dietas: action.payload
             }
-        case 'FILTRAR_DIETAS':
+        case FILTRAR_DIETAS:
             return {
                 ...state,
                 recetas: [...action.payload]
             }
-        case 'CAMBIAR_PAGINA':
+        case CAMBIAR_PAGINA:
             return {
                 ...state,
                 currentPage: action.payload
             }
-        case 'ORDENAR_POR_NOMBRE':
+        case ORDENAR_POR_NOMBRE:
             const allRecipe = [...state.recetas];
             const sortedLetter = allRecipe.sort((a, b) => {
                 if (action.payload === 'asc') {
@@ -78,7 +64,7 @@ const rootReducer = (state = initialState, action) => {
                 recetas: sortedLetter,
                 currentPage: 2
             }
-        case 'FILTRO_SCORE':
+        case FILTRO_SCORE:
             let allRecipes = [...state.recetas];
             let orderByHealthScore;
             if(action.payload === 'maximo') {
@@ -91,22 +77,22 @@ const rootReducer = (state = initialState, action) => {
                 recetas: orderByHealthScore,
                 currentPage: 2
             }
-        case 'SELECCIONADAS': 
+        case SELECCIONADAS: 
             return {
                 ...state,
                 seleccionadas: [...action.payload]
             }
-        case 'SEARCH':
+        case SEARCH:
             return {
                 ...state,
                 search: action.payload
             }
-        case 'CHECK':
+        case CHECK:
             return {
                 ...state,
                 check: action.payload
             }
-        // case 'POST_RECIPE':
+        // case POST_RECIPE:
         //     return {
         //         ...state
         //     }

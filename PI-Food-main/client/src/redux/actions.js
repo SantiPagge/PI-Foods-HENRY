@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { TRAER_RECETAS, VACIAR_ID, CAMBIAR_PAGINA, SEARCH, SELECCIONADAS, TRAER_DIETAS, FILTRAR_DIETAS, ORDENAR_POR_NOMBRE, FILTRO_SCORE, RECETA_ID } from './reducer';
+import { TRAER_RECETAS, VACIAR_ID, CAMBIAR_PAGINA, SEARCH, SELECCIONADAS, TRAER_DIETAS, FILTRAR_DIETAS, ORDENAR_POR_NOMBRE, FILTRO_SCORE, RECETA_ID } from './action-types';
 
 export const traerReceta = () => {
     return async (dispatch) => {
-        let receta = await axios(`/recipes`);
+        let receta = await axios(`http://localhost:3001/recipes`);
         return dispatch({type: TRAER_RECETAS, payload: receta.data});
     }
 };
@@ -37,7 +37,7 @@ export const setSeleccionadas = (payload) => {
 
 export const traerDietas = () => {
     return async (dispatch) => {
-        let receta = await axios(`/diets`);
+        let receta = await axios(`http://localhost:3001/diets`);
         return dispatch({type: TRAER_DIETAS, payload: receta.data});
     }
 };
@@ -65,7 +65,7 @@ export const filtroScoreH = (payload) => {
 
 export const recetaId = (id) => {
     return async (dispatch) => {
-        let receta = await axios(`/recipes/${id}`);
+        let receta = await axios(`http://localhost:3001/recipes/${id}`);
         return dispatch({type: RECETA_ID, payload: receta.data});
     }
 };
@@ -80,14 +80,14 @@ export const check = (payload) => {
 
 export const postRecipes = (payload) => {
     return async function () {
-        const postRecipe = await axios('/recipes', payload);
+        const postRecipe = await axios('http://localhost:3001/recipes', payload);
         return postRecipe;
     }
 };
 
 export const modificar = (id, payload) => {
     return async function () {
-        const modificar = await axios('/recipes/' + id, payload);
+        const modificar = await axios(`http://localhost:3001/recipes/${id}`, payload);
         return modificar;
     }
 };

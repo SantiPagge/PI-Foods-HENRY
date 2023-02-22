@@ -1,0 +1,15 @@
+export const TRAER_RECETAS = 'TRAER_RECETAS';
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const TRAER_DIETAS = 'TRAER_DIETAS';
+export const BUSCAR_RECETA = 'BUSCAR_RECETA';
+export const FILTRAR_DIETAS = 'FILTRAR_DIETAS';
+export const ORDENAR_POR_NOMBRE = 'ORDENAR_POR_NOMBRE';
+export const CAMBIAR_PAGINA = 'CAMBIAR_PAGINA';
+export const FILTRO_SCORE = 'FILTRO_SCORE';
+export const POST_RECIPE = 'POST_RECIPE';
+export const RECETA_ID = 'RECETA_ID';
+export const VACIAR_ID = 'VACIAR_ID';
+export const FILTRO_CREADO = 'FILTRO_CREADO';
+export const MODIFICAR_RECETA = "MODIFICAR_RECETA";
+export const SELECCIONADAS = "SELECCIONADAS";
+export const SEARCH = "SEARCH";

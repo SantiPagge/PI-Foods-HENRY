@@ -36,8 +36,8 @@ const { Recipe, Diets } = require('../../db');
 const searchInApi = async () => {
     try {
         const searchInApiRequest = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
-        // const BuscarenApi = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=447dc9bae5d14e9f9ca46069530aeadb&addRecipeInformation=true&number=100`,
-    //   { headers: { "Accept-Encoding": "gzip,deflate,compress" }}
+    //     const BuscarenApi = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=447dc9bae5d14e9f9ca46069530aeadb&addRecipeInformation=true&number=100`,
+    //   { headers: { "Accept-Encoding": "gzip,deflate,compress" }})
     //  )      PARA LOS LLAMADOS LIMITADOS, USAR ESTO PARA LA CORRECCION
 
         let info = await searchInApiRequest.data.results?.map((element) => {
@@ -112,14 +112,14 @@ const queryRecipe = async (recipe) => {
     //const agregaradb = await Recipe.findOrCreate(agregarlas) ME CAGO EN HENRY ERA MAS FACIL
     if(recipe){
         const searchRecipe = await dbApi();
-        const result = searchRecipe.filter((element) => element.name.toLowerCase().includes(recipe.toLowerCase()) === true)
+        const result = searchRecipe.filter((element) => element.name.toLowerCase().includes(recipe.toLowerCase()))
         if(result.length) return result;
     } else {
         const all = await dbApi();
         return all;
     }
 
-    throw (`We don't have data about this recipe`);
+    throw Error (`We don't have data about this recipe`);
 
     } catch (error) {
         return error;
@@ -127,23 +127,24 @@ const queryRecipe = async (recipe) => {
 };
 
 // buscar receta por id
-const recipeId = async (idRecipe) => {
-    try {
-        const searchRecipe = await dbApi();
-        const recipe = searchRecipe.find((element) => element.id === idRecipe);
+const recipeId = async (id) => {
+
+        let searchRecipe = await dbApi();
+        let recipe = searchRecipe.find((element) => element.id == id);
+        console.log(searchRecipe)
         if(recipe) {
             return recipe;
         } else {
-            throw (`Ups, we don't have a recipe with this id`);
+            throw new Error (`Ups, we don't have a recipe with this id`);
         }
-    } catch (error) {
-        return error;
-    }
 };
 
 
 // Mostrar dietas
 const showDiets = async () => {
+    // const allDiets = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
+    // const dietTypes = allDiets.map((recipe) => recipe.diet.map((e) => e))
+    // console.log(dietTypes);
     const dietTypes = [
         "gluten free", //
         "ketogenic", //
@@ -168,14 +169,13 @@ const showDiets = async () => {
 
 const postRecipe = async (objRecipe) => {
     try {
-        const { name, summary, healthScore, steps, image, dishTypes, diets } = objRecipe;
+        const { name, summary, healthScore, steps, image, diets } = objRecipe;
         const recipe = {
             name,
             summary,
             healthScore,
             steps,
-            image,
-            dishTypes
+            image
         };
 
         const dietInfo = await Diets.findAll({
@@ -190,7 +190,7 @@ const postRecipe = async (objRecipe) => {
         return Recipe.findAll();
 
     } catch (error) {
-        return error;
+        throw Error ('No se creo');
     }
 };
 
