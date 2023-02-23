@@ -9,12 +9,14 @@ import style from './Detail.module.css'
 export const Detail = () => {
     
     const dispatch = useDispatch();
-    const detailId = useSelector(state => state.detailId);
-
+    const detailId = useSelector(state => state.recetaId);
+    const { id } = useParams();
+    
     useEffect(() => {
-        dispatch(recetaId())
+        dispatch(recetaId(id))
     }, [])
-
+    
+    console.log(detailId)
     return (
         <div className={style.detailContainer}>
             <div>
