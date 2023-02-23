@@ -18,11 +18,11 @@ export const RecipeCard = ({ id, name, healthScore, image, diets }) => {
         <Link to={`/detail/${id}`}>
             <div className={style.card}>
                 {/* <h3>{id}</h3> */}
-                <img className={style.image} src={image} alt='Image'/>
+                <img className={style.image} src={image} alt='Image not found'/>
                 <h3  className={style.name}>{name}</h3>
                 {/* <h3  className={style.summary} >{summary}</h3> */}
-                <h3 className={style.diets}>{diets}</h3>
-                <h3 className={style.healthScore}>{healthScore}</h3>
+                <h3 className={style.diets}>Diets: {diets.join(', ')}</h3>
+                <h3 className={style.healthScore}>HealthScore: {healthScore}</h3>
                 {/* <h3 className={style.dishTypes}>{dishTypes}</h3> */}
                 {/* <h3 className={style.steps}>{steps}</h3> */}
             </div>

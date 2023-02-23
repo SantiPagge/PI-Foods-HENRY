@@ -39,3 +39,21 @@
     border-radius: .7rem;
     border: black;
 }
+
+.name {
+    color: #edf2f4;
+    text-shadow: 5px 5px 5px rgb(29, 29, 29);
+}
+
+.diets {
+    color: #dad7cd;
+    text-shadow: 5px 5px 5px rgb(15, 15, 15);
+    margin-bottom: 5px;
+}
+
+.healthScore {
+    color: #dad7cd;
+    text-shadow: 5px 5px 5px rgb(15, 15, 15);
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
