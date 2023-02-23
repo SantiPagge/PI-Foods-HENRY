@@ -13,3 +13,4 @@ export const FILTRO_CREADO = 'FILTRO_CREADO';
 export const MODIFICAR_RECETA = "MODIFICAR_RECETA";
 export const SELECCIONADAS = "SELECCIONADAS";
 export const SEARCH = "SEARCH";
+export const CHECK = 'CHECK';

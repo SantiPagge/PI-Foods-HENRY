@@ -1,0 +1,8 @@
+.container {
+    height: 100vh;
+    background-color: bisque;
+    padding: 0px;
+    margin: 0px;
+    /* padding-left: 50rem; */
+    display: flex;
+}

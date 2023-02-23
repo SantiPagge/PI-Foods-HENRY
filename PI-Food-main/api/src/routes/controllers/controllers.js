@@ -44,11 +44,11 @@ const searchInApi = async () => {
             return{
                 id: element.id,
                 name: element.title,
-                summary: element.summary,
-                healthScore: element.healthScore,
                 image: element.image,
-                dishTypes: element.dishTypes?.map(element => element),
                 diets: element.diets?.map(element => element),
+                healthScore: element.healthScore,
+                summary: element.summary,
+                dishTypes: element.dishTypes?.map(element => element),
                 steps: element.analyzedInstructions[0]?.steps.map((element) => `${element.number} ${element.step}`).join(' '),
             }
         })
@@ -77,11 +77,11 @@ const searchInDb = async () => {
             return {
                 id: element.id,
                 name: element.name,
-                summary: element.summary,
-                healthScore: element.healthScore,
                 image: element.image,
+                healthScore: element.healthScore,
+                diets: element.diets?.map(element => element.name),
+                summary: element.summary,
                 steps: element.steps,
-                diets: element.diets?.map(element => element.name)
             }
         }) 
     return infoDb;
@@ -142,29 +142,52 @@ const recipeId = async (id) => {
 
 // Mostrar dietas
 const showDiets = async () => {
+    //-----------------------------------HARDCODED-------------------------------------------------------
     // const allDiets = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
     // const dietTypes = allDiets.map((recipe) => recipe.diet.map((e) => e))
     // console.log(dietTypes);
-    const dietTypes = [
-        "gluten free", //
-        "ketogenic", //
-        "lacto ovo vegetarian", //
-        "vegan", //
-        "pescatarian", //
-        "paleolithic", //
-        "primal",//
-        "fodmap friendly", //
-        "whole 30", //
-        "dairy free", //
-    ];
-    dietTypes.forEach((diet) => {
-        Diets.findOrCreate({
-            where: {
-                name: diet
-            }
-        })
-    })
-    return Diets.findAll();
+    // const dietTypes = [
+    //     "gluten free", //
+    //     "ketogenic", //
+    //     "lacto ovo vegetarian", //
+    //     "vegan", //
+    //     "pescatarian", //
+    //     "paleolithic", //
+    //     "primal",//
+    //     "fodmap friendly", //
+    //     "whole 30", //
+    //     "dairy free", //
+    // ];
+    // dietTypes.forEach((diet) => {
+    //     Diets.findOrCreate({
+    //         where: {
+    //             name: diet
+    //         }
+    //     })
+    // })
+    // return Diets.findAll();
+    //------------------------------------------------------------------------------------
+    let ruta = `https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`;
+
+    const isEmpty = await Diets.findAll();
+    if(!isEmpty.length){
+      let recetas = ["vegetarian"];
+      const peticion = await axios.get(ruta);
+      let data = await peticion.data.results; //data Es Un Array De Objetos De Recetas
+
+      data.forEach((elem) => {
+        recetas = [...recetas, ...elem.diets];
+      });
+      recetas = [...new Set(recetas)];
+      for(let name of recetas){
+        await Diets.create({name: name});
+      }
+      // return recetas;
+      const dietas = await Diets.findAll();
+      return dietas;
+    }else{
+      return isEmpty;
+    }
 };
 
 const postRecipe = async (objRecipe) => {
@@ -172,10 +195,10 @@ const postRecipe = async (objRecipe) => {
         const { name, summary, healthScore, steps, image, diets } = objRecipe;
         const recipe = {
             name,
-            summary,
+            image,
             healthScore,
+            summary,
             steps,
-            image
         };
 
         const dietInfo = await Diets.findAll({

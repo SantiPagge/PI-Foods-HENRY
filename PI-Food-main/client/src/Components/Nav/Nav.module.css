@@ -1,0 +1,38 @@
+.nav {
+    height: 3rem;
+    background-color: black;
+    color: black;
+    border-color: yellow;
+    padding: 0px;
+    margin: 0px;
+}
+
+.exitButton {
+    background-color: black;
+    border-color: yellow;
+    color: white;
+    border-radius: .5rem;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+}
+
+.createRecipeButton {
+    background-color: black;
+    border-color: yellow;
+    color: white;
+    border-radius: .5rem;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeButton {
+    background-color: black;
+    border-color: yellow;
+    color: white;
+    border-radius: .5rem;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+}
