@@ -18,15 +18,15 @@ export const Home = () => {
 
     }, [])
 
-const [charactersPerPage, setCharactersPerPage] = useState(9); //cuantas recetas x pagina
-const indexOfLastCharacter = currentPage * charactersPerPage; //pagina x cantidad  recetas en pagina
-const indexOfFirsChararacter = indexOfLastCharacter - charactersPerPage;
-const currentCharacters = recetas.slice(indexOfFirsChararacter, indexOfLastCharacter); //agarra el indice del primero y del ultimo pj
+const [recipesPerPage, setRecipesPerPage] = useState(9); //cuantas recetas x pagina
+const indexOfLastRecipe = currentPage * recipesPerPage; //pagina x cantidad  recetas en pagina
+const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //agarra el indice de la primer y ultima receta
 
     return (
         <div>
             <div className={style.container}>
-                {currentCharacters?.map((r, index) => (<RecipeCard
+                {currentRecipes?.map((r, index) => (<RecipeCard
                     key = {`r.${index}`}
                     image = {r.image}
                     name = {r.name}
@@ -39,7 +39,7 @@ const currentCharacters = recetas.slice(indexOfFirsChararacter, indexOfLastChara
                 />))}
             </div>
                 <div>
-                 <Pagination charactersPerPage={charactersPerPage} recetas={recetas.length} currentPage={currentPage}/>
+                 <Pagination recipesPerPage={recipesPerPage} recetas={recetas.length} currentPage={currentPage}/>
                 </div>
         </div>
     )
