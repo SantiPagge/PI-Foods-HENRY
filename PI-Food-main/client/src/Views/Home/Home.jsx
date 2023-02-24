@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
 import { RecipeCard } from "../../Components/Recipes/RecipeCard";
 import style from './Home.module.css';
 import { traerReceta } from "../../redux/actions";
@@ -15,8 +14,8 @@ export const Home = () => {
 
     useEffect(() => {
         dispatch(traerReceta())
-
-    }, [])
+        // dispatch(vaciarId())
+    }, [dispatch])
 
 const [recipesPerPage, setRecipesPerPage] = useState(9); //cuantas recetas x pagina
 const indexOfLastRecipe = currentPage * recipesPerPage; //pagina x cantidad  recetas en pagina

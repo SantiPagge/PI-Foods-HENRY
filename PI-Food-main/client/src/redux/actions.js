@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TRAER_RECETAS, VACIAR_ID, CAMBIAR_PAGINA, SEARCH, SELECCIONADAS, TRAER_DIETAS, FILTRAR_DIETAS, ORDENAR_POR_NOMBRE, FILTRO_SCORE, RECETA_ID } from './action-types';
+import { TRAER_RECETAS, LIMPIAR_DETAIL, VACIAR_ID, CAMBIAR_PAGINA, SEARCH, SELECCIONADAS, TRAER_DIETAS, FILTRAR_DIETAS, ORDENAR_POR_NOMBRE, FILTRO_SCORE, RECETA_ID } from './action-types';
 
 export const traerReceta = () => {
     return async (dispatch) => {
@@ -11,6 +11,12 @@ export const traerReceta = () => {
 export const vaciarId = () => {
     return {
         type: VACIAR_ID
+    }
+}
+
+export const limpiarDetail = () => {
+    return {
+        type: LIMPIAR_DETAIL,
     }
 }
 
@@ -64,9 +70,13 @@ export const filtroScoreH = (payload) => {
 };  
 
 export const recetaId = (id) => {
-    return async (dispatch) => {
-        let receta = await axios(`/recipes/${id}`);
-        return dispatch({type: RECETA_ID, payload: receta.data});
+    try {
+        return async (dispatch) => {
+            let receta = await axios(`/recipes/${id}`);
+            return dispatch({type: RECETA_ID, payload: receta.data});
+        }
+    } catch (error) {
+        console.log(error);
     }
 };
 
