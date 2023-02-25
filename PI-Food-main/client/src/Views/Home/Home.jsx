@@ -5,6 +5,7 @@ import style from './Home.module.css';
 import { traerReceta } from "../../redux/actions";
 import { Pagination } from "../../Components/Pagination/Pagination";
 import { useState } from "react";
+// import Comidas1 from '../../assets/Comidas1.jpg'
 
 export const Home = () => {
 
@@ -35,8 +36,9 @@ const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //a
                     // summary = {r.summary}
                     // dishTypes = {r.dishTypes}
                     // steps = {r.steps}
-                />))}
+                    />))}
             </div>
+                    {/* <img className="fondo" src={Comidas1}/> */}
                 <div>
                  <Pagination recipesPerPage={recipesPerPage} recetas={recetas.length} currentPage={currentPage}/>
                 </div>

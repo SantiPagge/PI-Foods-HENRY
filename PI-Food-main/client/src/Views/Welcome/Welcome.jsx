@@ -7,6 +7,7 @@ export const Welcome = (props) => {
 
     return (
         <div className={style.main}>
+            <video src={foods} autoPlay loop muted/>
             <div className={style.overlay}/>
             <div className={style.centrar}>
                 <section className={style.cuadrado}>
@@ -17,7 +18,6 @@ export const Welcome = (props) => {
                     <Link to='home'><button className={style.welcomeButton}>Lets Cook!</button></Link>
                 </section>
             </div>
-            <video src={foods} autoPlay loop muted/>
         </div>
     )
 

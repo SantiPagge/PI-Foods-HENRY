@@ -1,6 +1,5 @@
 .container {
     background-color: gray;
-    /* padding-left: 50rem; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
