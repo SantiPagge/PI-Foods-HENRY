@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import style from '../RecipesForm/RecipesForm.module.css'
 
 export const RecipesForm = () => {
     const [name, setName] = useState('');
@@ -108,6 +109,25 @@ export const RecipesForm = () => {
                 <input type='text' id='image' value={image} onChange={handleImage}></input>
             </div>
         </form>
+            <span>Diets: </span>
+                <div>
+                    <select onChange={handleDiets}>
+                        <option name="vegetarian" value="vegetarian">Vegetarian</option>
+                        <option name="gluten-free" value="gluten-free">Gluten Free</option>
+                        <option name="dairy-free" value="dairy-free">Dairy Free</option>
+                        <option name="lacto-ovo-vegetarian" value="lacto-ovo-vegetarian">Lacto Ovo Vegetarian</option>
+                        <option name="vegan" value="vegan">Vegan</option>
+                        <option name="paleolithic" value="paleolithic">Paleolithic</option>
+                        <option name="primal" value="primal">Primal</option>
+                        <option name="whole-30" value="whole-30">Whole 30</option>
+                        <option name="pescatarian" value="pescatarian">Pescatarian</option>
+                        <option name="ketogenic" value="ketogenic">Ketogenic</option>
+                        <option name="fodmap-friendly" value="fodmap-friendly">Fodmap Friendly</option>
+                    </select>
+                </div>
+                <div>
+                    {Array.entries(errors).length === 0 && <button type="submit">Add Recipe</button>}
+                </div>
         </div>
     )
 
