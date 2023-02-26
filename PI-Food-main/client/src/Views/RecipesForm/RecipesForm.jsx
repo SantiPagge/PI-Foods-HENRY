@@ -11,7 +11,7 @@ export const RecipesForm = () => {
 
     useEffect(() =>{
         dispatch(traerDietas())
-    })
+    }, [])
 
     const diets = useSelector(state => state.dietas)
 
