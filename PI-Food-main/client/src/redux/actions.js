@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TRAER_RECETAS, LIMPIAR_DETAIL, VACIAR_ID, CHANGE_PAG, SEARCH, SET_SELECTED, TRAER_DIETAS, FILTRAR_DIETAS, SORT_BY_NAME, FILTRO_SCORE, RECETA_ID } from './action-types';
+import { TRAER_RECETAS, LIMPIAR_DETAIL, VACIAR_ID, CHANGE_PAG, SEARCH, SET_SELECTED, TRAER_DIETAS, FILTER_BY_DIETS, SORT_BY_NAME, FILTRO_SCORE, RECETA_ID } from './action-types';
 
 export const traerReceta = () => {
     return async (dispatch) => {
@@ -48,9 +48,9 @@ export const traerDietas = () => {
     }
 };
 
-export const filtrarDietas = (payload) => {
+export const filterByDiets = (payload) => {
     return {
-        type: FILTRAR_DIETAS,
+        type: FILTER_BY_DIETS,
         payload: payload
     }
 };

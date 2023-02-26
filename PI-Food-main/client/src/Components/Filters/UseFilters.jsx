@@ -33,7 +33,7 @@ export const UseFilters = (props) => {
         }
     return true
     }
-    const filtro = recetas2?.filter((element) => filtroDietas(seleccionadas, element.diets) && element.name.toLowerCase().includes(search));
+    const filtro = recetas2?.filter((element) => filtroDietas(seleccionadas, element.diets) && element.name?.toLowerCase().includes(search));
 
 // Barra de busqueda
 

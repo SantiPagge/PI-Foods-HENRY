@@ -5,6 +5,7 @@ import style from './Home.module.css';
 import { traerReceta } from "../../redux/actions";
 import { Pagination } from "../../Components/Pagination/Pagination";
 import { useState } from "react";
+import { SearchBar } from "../../Components/Filters/SearchBar";
 
 export const Home = () => {
 
@@ -24,6 +25,7 @@ const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //a
     return (
         <div>
             <div className={style.container}>
+                <SearchBar></SearchBar>
                 {currentRecipes?.map((r, index) => (<RecipeCard
                     key = {`r.${index}`}
                     image = {r.image}
