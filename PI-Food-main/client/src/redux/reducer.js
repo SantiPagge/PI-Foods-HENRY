@@ -1,4 +1,4 @@
-import { TRAER_RECETAS, POST_RECIPE, MODIFICAR_RECETA, VACIAR_ID, CAMBIAR_PAGINA, SEARCH, SELECCIONADAS, TRAER_DIETAS, FILTRAR_DIETAS, ORDENAR_POR_NOMBRE, FILTRO_SCORE, CHECK, RECETA_ID, LIMPIAR_DETAIL } from './action-types';
+import { TRAER_RECETAS, POST_RECIPE, MODIFICAR_RECETA, VACIAR_ID, SEARCH, SET_SELECTED, TRAER_DIETAS, FILTRAR_DIETAS, SORT_BY_NAME, FILTRO_SCORE, CHECK, RECETA_ID, LIMPIAR_DETAIL, CHANGE_PAG } from './action-types';
 
 const initialState = {
     recetas: [],
@@ -52,12 +52,12 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 recetas: [...action.payload]
             }
-        case CAMBIAR_PAGINA:
+        case CHANGE_PAG:
             return {
                 ...state,
                 currentPage: action.payload
             }
-        case ORDENAR_POR_NOMBRE:
+        case SORT_BY_NAME:
             const allRecipe = [...state.recetas];
             const sortedLetter = allRecipe.sort((a, b) => {
                 if (action.payload === 'asc') {
@@ -84,7 +84,7 @@ const rootReducer = (state = initialState, action) => {
                 recetas: orderByHealthScore,
                 currentPage: 2
             }
-        case SELECCIONADAS: 
+        case SET_SELECTED: 
             return {
                 ...state,
                 seleccionadas: [...action.payload]

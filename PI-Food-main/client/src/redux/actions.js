@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TRAER_RECETAS, LIMPIAR_DETAIL, VACIAR_ID, CAMBIAR_PAGINA, SEARCH, SELECCIONADAS, TRAER_DIETAS, FILTRAR_DIETAS, ORDENAR_POR_NOMBRE, FILTRO_SCORE, RECETA_ID } from './action-types';
+import { TRAER_RECETAS, LIMPIAR_DETAIL, VACIAR_ID, CHANGE_PAG, SEARCH, SET_SELECTED, TRAER_DIETAS, FILTRAR_DIETAS, SORT_BY_NAME, FILTRO_SCORE, RECETA_ID } from './action-types';
 
 export const traerReceta = () => {
     return async (dispatch) => {
@@ -20,9 +20,9 @@ export const limpiarDetail = () => {
     }
 }
 
-export const cambiarPagina = (pagenumber) => {
+export const changePag = (pagenumber) => {
     return {
-        type: CAMBIAR_PAGINA,
+        type: CHANGE_PAG,
         payload: pagenumber++
     }
 };
@@ -34,9 +34,9 @@ export const setSearch = (payload) => {
     }
 };
 
-export const setSeleccionadas = (payload) => {
+export const setSelected = (payload) => {
     return {
-        type: SELECCIONADAS,
+        type: SET_SELECTED,
         payload,
     }
 };
@@ -55,9 +55,9 @@ export const filtrarDietas = (payload) => {
     }
 };
 
-export const ordenarPorNombre = (payload) => {
+export const sortByName = (payload) => {
     return {
-        type: ORDENAR_POR_NOMBRE,
+        type: SORT_BY_NAME,
         payload
     }
 };
