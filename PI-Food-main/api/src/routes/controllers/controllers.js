@@ -131,7 +131,7 @@ const recipeId = async (id) => {
 
         let searchRecipe = await dbApi();
         let recipe = searchRecipe.find((element) => element.id == id);
-        console.log(searchRecipe)
+        // console.log(searchRecipe)
         if(recipe) {
             return recipe;
         } else {
@@ -199,6 +199,7 @@ const postRecipe = async (objRecipe) => {
             healthScore,
             summary,
             steps,
+            diets
         };
 
         const dietInfo = await Diets.findAll({

@@ -89,9 +89,15 @@ export const check = (payload) => {
 };
 
 export const postRecipes = (payload) => {
-    return async function () {
-        const postRecipe = await axios('/recipes/', payload);
-        return postRecipe;
+    return async function (dispatch) {
+        try {
+            const postRecipe = await axios('/recipes/', payload)
+            .then((a) => alert(a))
+            // dispatch({type: POST_RECIPE, payload: postRecipe.data})
+            return postRecipe;
+        } catch (error) {
+            console.log(error)
+        }
     }
 };
 
