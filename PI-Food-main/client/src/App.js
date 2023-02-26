@@ -7,6 +7,7 @@ import { Welcome } from './Views/Welcome/Welcome';
 import { Home } from './Views/Home/Home'
 import { Nav } from './Components/Nav/Nav'
 import { Detail } from './Views/Details/Detail'
+import { RecipesForm } from './Views/RecipesForm/RecipesForm';
 
 // axios.defaults.baseURL = "https://pi-food-production-3adc.up.railway.app/";
 axios.defaults.baseURL = 'http://localhost:3001';
@@ -19,7 +20,7 @@ function App() {
     <Switch>
       <Route exact path='/' component={Welcome}/>
       <Route exact path='/home' component={Home}/>
-      {/* <Route path='/create' component={CreateRecipe}/> */}
+      <Route path='/create' component={RecipesForm}/>
       <Route path='/detail/:id' component={Detail}/>
       {/* <Route path='/modify/:id' component={Modify}/> */}
       {/* <Route path='/menu' component={Sidebar}/> */}

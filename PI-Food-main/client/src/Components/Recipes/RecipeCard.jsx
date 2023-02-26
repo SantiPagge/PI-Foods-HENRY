@@ -1,10 +1,10 @@
 import React from "react";
 import style from './RecipeCard.module.css';
 import { Link } from 'react-router-dom'
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 export const RecipeCard = ({ id, name, healthScore, image, diets }) => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     return (
         <Link to = {`/detail/${id}`}>

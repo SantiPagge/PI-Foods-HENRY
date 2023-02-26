@@ -18,7 +18,7 @@ export const Home = () => {
         // dispatch(vaciarId())
     }, [dispatch])
 
-const [recipesPerPage, setRecipesPerPage] = useState(9); //cuantas recetas x pagina
+const [recipesPerPage] = useState(9); //cuantas recetas x pagina
 const indexOfLastRecipe = currentPage * recipesPerPage; //pagina x cantidad  recetas en pagina
 const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
 const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //agarra el indice de la primer y ultima receta

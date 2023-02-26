@@ -34,7 +34,7 @@ export const Detail = (props) => {
             <div>
                 <div>
                     {/* <h3>Id: {detailId.id}</h3> */}
-                    <img src={detailId?.image}/>
+                    <img src={detailId?.image} alt='Recipe'/>
                     <h2>Name: {detailId?.name}</h2>
                     <h3>Steps: {detailId?.steps ? detailId.steps : noHaySteps}</h3>
                     <h4>Diets: {detailId?.diets?.map((diet) => diet)}</h4>
