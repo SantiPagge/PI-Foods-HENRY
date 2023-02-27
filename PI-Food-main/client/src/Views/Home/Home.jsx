@@ -23,9 +23,11 @@ const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
 const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //agarra el indice de la primer y ultima receta
 
     return (
-        <div>
-            <div className={style.container}>
+        <div className={style.container}>
+            <div className={style.searchBar}>
                 <SearchBar></SearchBar>
+            </div>
+            <div className={style.cards}>
                 {currentRecipes?.map((r, index) => (<RecipeCard
                     key = {`r.${index}`}
                     image = {r.image}
@@ -35,7 +37,7 @@ const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //a
                     id = {r.id}
                     />))}
             </div>
-                <div>
+                <div className={style.pagination}>
                  <Pagination recipesPerPage={recipesPerPage} recetas={recetas.length} currentPage={currentPage}/>
                 </div>
         </div>
