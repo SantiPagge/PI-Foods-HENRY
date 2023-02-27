@@ -60,21 +60,25 @@ const rootReducer = (state = initialState, action) => {
         case SORT_BY_NAME:
             const allRecipe = [...state.recetas];
             const sortedLetter = allRecipe.sort((a, b) => {
-                if (action.payload === 'asc') {
-                    return a.name.localeCompare(b.name);
-                } else {
-                    return b.name.localeCompare(a.name);
-                }
+            const nameA = typeof a.name === 'string' ? a.name : '';
+            const nameB = typeof b.name === 'string' ? b.name : '';
+            if (action.payload === 'Asc') {
+            return nameA.localeCompare(nameB);
+                } else if (action.payload === 'Des') {
+                return nameB.localeCompare(nameA);
+                 } else {
+                return 0;
+         }
             });
             return {
-                ...state,
+                 ...state,
                 recetas: sortedLetter,
-                currentPage: 2
-            }
+                currentPage: 1  
+        }
         case FILTRO_SCORE:
             let allRecipes = [...state.recetas];
             let orderByHealthScore;
-            if(action.payload === 'maximo') {
+            if(action.payload === 'max') {
                 orderByHealthScore = allRecipes.sort((a, b) => b.healthScore - a.healthScore);
             } else {
                 orderByHealthScore = allRecipes.sort((a, b) => a.healthScore - b.healthScore);
@@ -82,7 +86,7 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 recetas: orderByHealthScore,
-                currentPage: 2
+                currentPage: 1
             }
         case SET_SELECTED: 
             return {

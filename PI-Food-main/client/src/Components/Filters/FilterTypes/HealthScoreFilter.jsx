@@ -1,26 +1,29 @@
 import React from "react";
+import {filtroScoreH, changePag} from '../../../redux/actions';
 import { useDispatch } from "react-redux";
-import * as actions from '../../../redux/actions'
-import style from './HealthScoreFilter.module.css';
+import style from "./HealthScoreFilter.module.css";
 
 
 export const HealthScoreFilter = () => {
 
     const dispatch = useDispatch()
 
-    const filter = (event) => {
+
+    const filter = (event) =>{
         event.preventDefault()
-        dispatch(actions.filtroScoreH(event.target.value))
-        dispatch(actions.changePag(1))
+        dispatch(filtroScoreH(event.target.value))
+        dispatch(changePag(1))
     }
 
-    return (
+    return(
+
         <div className={style.box}>
-            <select onChange={ element => filter(element)}>
-                <option value='HealthScore'>Health Score</option>
-                <option value='max'>Max to min</option>
-                <option value='min'>Min to max</option>
-            </select>
+<select className='classic' onChange={element => filter(element)}>
+<option value="">Health Score</option>
+    <option value ="max">Max-Min</option>
+    <option value ="min">Min-Max</option>
+
+</select>
         </div>
     )
 }

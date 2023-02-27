@@ -85,23 +85,6 @@ export const RecipesForm = () => {
         })
     };
 
-    // const handleDiets = (event) => {
-    //     const { value, checked } = event.target;
-    //     setForm((form) => {
-    //         if (checked) {
-    //             return {
-    //                 ...form,
-    //                 diets: [...form.diets, value]
-    //             };
-    //         } else {
-    //             return {
-    //                 ...form,
-    //                 diets: form.diets.filter((diet) => diet !== value)
-    //             }
-    //         }
-    //     })
-    // };
-
     const handleDiets = (event) => {
         if(event.target.checked){
             setForm({
@@ -129,7 +112,6 @@ export const RecipesForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // dispatch(postRecipes(form))
         await axios.post('/recipes', form)
         .then((a) =>
         setForm({
@@ -186,7 +168,6 @@ export const RecipesForm = () => {
                                 id={option.id}
                                 onChange={handleDiets}/>
                             {option.name}
-                            {/* {error.diets && <p style={{color: 'red'}} >{error.diets}</p>} */}
                         </label>
                     ))}
                 </div>
