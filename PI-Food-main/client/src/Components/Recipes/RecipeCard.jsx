@@ -13,7 +13,7 @@ export const RecipeCard = ({ id, name, healthScore, image, diets }) => {
                 <img className={style.image} src={image} alt='not found'/>
                 <h3  className={style.name}>{name}</h3>
                 {/* <h3  className={style.summary} >{summary}</h3> */}
-                <h3 className={style.diets}>Diets: {diets}</h3>
+                <h3 className={style.diets}>Diets: {diets.join(' ')}</h3>
                 <h3 className={style.healthScore}>HealthScore: {healthScore}</h3>
                 {/* <h3 className={style.dishTypes}>{dishTypes}</h3> */}
                 {/* <h3 className={style.steps}>{steps}</h3> */}

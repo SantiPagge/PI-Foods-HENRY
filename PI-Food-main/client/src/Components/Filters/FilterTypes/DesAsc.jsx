@@ -5,7 +5,7 @@ export const DesAsc = (props) => {
     return (
         <div className={style.desAscBox}>
             <select onChange={ element => props.handleSort(element)}>
-                <option selected disabled>Alfabetic</option>
+                <option value='Alfabetic'>Alfabetic</option>
                     <option value='Ascendent'>Ascendent</option>
                     <option value='Descendent'>Descendent</option>
             </select>

@@ -47,7 +47,7 @@ const searchInApi = async () => {
                 image: element.image,
                 diets: element.diets?.map(element => element),
                 healthScore: element.healthScore,
-                summary: element.summary,
+                summary: element.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ""),
                 dishTypes: element.dishTypes?.map(element => element),
                 steps: element.analyzedInstructions[0]?.steps.map((element) => `${element.number} ${element.step}`).join(' '),
             }
