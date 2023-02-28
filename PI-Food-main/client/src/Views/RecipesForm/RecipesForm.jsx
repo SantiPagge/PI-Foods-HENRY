@@ -123,7 +123,7 @@ export const RecipesForm = () => {
             diets: []
         }))
     }
-    console.log(form);
+    // console.log(form);
     
     useEffect(() => {
         setError(validations(form))

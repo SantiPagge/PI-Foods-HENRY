@@ -8,7 +8,7 @@ import style from './Detail.module.css'
 
 export const Detail = (props) => {
     
-    const noHaySteps = 'Esta receta no tiene pasos'
+    const noHaySteps = `This recipe don't have steps.`
     const dispatch = useDispatch();
     const detailId = useSelector(state => state.recetaId);
     const { id } = useParams();
@@ -16,16 +16,17 @@ export const Detail = (props) => {
 
     const regresar = () => {
         dispatch(vaciarId())
-        // history.push(`/home`)
     }
 
     useEffect(() => {
+        // dispatch(loading())
         if(!detailId.length && id){
         const timerId = setTimeout(() => {
           dispatch(recetaId(id))
           if(id === 'undefined') console.log('cargando id')
         }, 3000)
       
+        // dispatch(loading())
         return () => clearTimeout(timerId)}
       }, [dispatch])
 
@@ -33,8 +34,8 @@ export const Detail = (props) => {
         <div className={style.detailContainer}>
             <div>
                 <div>
-                    {/* <h3>Id: {detailId.id}</h3> */}
-                    <img src={detailId?.image} alt='Recipe'/>
+                    <img src={detailId?.image} alt='RecipeImg'/>
+                    <h3>Id: {detailId.id}</h3>
                     <h2>Name: {detailId?.name}</h2>
                     <h3>Steps: {detailId?.steps ? detailId.steps : noHaySteps}</h3>
                     <h4>Diets: {detailId?.diets?.map((diet) => diet)}</h4>

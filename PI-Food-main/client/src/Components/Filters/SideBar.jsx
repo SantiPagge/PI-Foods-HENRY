@@ -67,6 +67,7 @@ useEffect(() => {
             <DesAsc className={style.filter}/>
 
             <HealthScoreFilter className={style.filter}/>
+            <h4>Diets:</h4>
             <FilterDiets handleChange2={handleChange2}  />
             <button className={style.button} onClick={(event) => handleClick(event)}><p>Reset Filters</p></button>
    

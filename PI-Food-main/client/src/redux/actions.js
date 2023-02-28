@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TRAER_RECETAS, LIMPIAR_DETAIL, VACIAR_ID, CHANGE_PAG, SEARCH, SET_SELECTED, TRAER_DIETAS, FILTER_BY_DIETS, SORT_BY_NAME, FILTRO_SCORE, RECETA_ID } from './action-types';
+import { TRAER_RECETAS, LIMPIAR_DETAIL, VACIAR_ID, LOADER, CHANGE_PAG, SEARCH, SET_SELECTED, TRAER_DIETAS, FILTER_BY_DIETS, SORT_BY_NAME, FILTRO_SCORE, RECETA_ID } from './action-types';
 
 export const traerReceta = () => {
     return async (dispatch) => {
@@ -93,7 +93,6 @@ export const postRecipes = (payload) => {
         try {
             const postRecipe = await axios('/recipes/', payload)
             .then((a) => alert(a))
-            // dispatch({type: POST_RECIPE, payload: postRecipe.data})
             return postRecipe;
         } catch (error) {
             console.log(error)
@@ -101,11 +100,6 @@ export const postRecipes = (payload) => {
     }
 };
 
-export const modificar = (id, payload) => {
-    return async function () {
-        const modificar = await axios(`/recipes/${id}`, payload);
-        return modificar;
-    }
-};
-
-
+export const loading = () => {
+    return {type: LOADER}
+}

@@ -2,19 +2,23 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RecipeCard } from "../../Components/Recipes/RecipeCard";
 import style from './Home.module.css';
-import { traerReceta } from "../../redux/actions";
+import { traerReceta, loading } from "../../redux/actions";
 import { Pagination } from "../../Components/Pagination/Pagination";
 import { useState } from "react";
 import { SideBar } from "../../Components/Filters/SideBar";
+import { Loader } from "../../Components/Loader/Loader";
 
 export const Home = () => {
 
     const dispatch = useDispatch();
     const recetas = useSelector(state => state.recetas);
     const currentPage = useSelector(state => state.currentPage);
+    const loader = useSelector(state => state.loader);
 
-    useEffect(() => {
-        dispatch(traerReceta())
+    useEffect(async () => {
+        dispatch(loading())
+        await dispatch(traerReceta())
+        dispatch(loading())
     }, [dispatch])
 
 const [recipesPerPage] = useState(9); //cuantas recetas x pagina
@@ -22,6 +26,7 @@ const indexOfLastRecipe = currentPage * recipesPerPage; //pagina x cantidad  rec
 const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
 const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //agarra el indice de la primer y ultima receta
 
+if (loader === true) {
     return (
         <div className={style.container}>
             <div className={style.searchBar}>
@@ -42,4 +47,9 @@ const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //a
                 </div>
         </div>
     )
+    } else {
+        return (
+            <Loader/>
+        )
+    }
 }
