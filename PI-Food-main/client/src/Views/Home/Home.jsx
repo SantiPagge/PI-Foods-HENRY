@@ -30,7 +30,7 @@ if (loader === true) {
     return (
         <div className={style.container}>
             <div className={style.searchBar}>
-                <SideBar></SideBar>
+                <SideBar/>
             </div>
             <div className={style.cards}>
                 {currentRecipes?.map((r, index) => (<RecipeCard
@@ -43,7 +43,10 @@ if (loader === true) {
                     />))}
             </div>
                 <div className={style.pagination}>
-                 <Pagination recipesPerPage={recipesPerPage} recetas={recetas.length} currentPage={currentPage}/>
+                 <Pagination 
+                 recipesPerPage={recipesPerPage} 
+                 recetas={recetas.length} 
+                 currentPage={currentPage}/>
                 </div>
         </div>
     )
