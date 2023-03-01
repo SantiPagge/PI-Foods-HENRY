@@ -1,3 +1,9 @@
 textarea {
     resize: none;
 }
+
+.errorMessage {
+    color: red;
+    border-color: black;
+}
+

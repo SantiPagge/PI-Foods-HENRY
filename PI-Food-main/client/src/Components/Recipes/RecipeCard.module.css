@@ -13,7 +13,7 @@
 
   .card {
     box-sizing: border-box;
-    width: 21rem;
+    width: 20rem;
     height: 27rem;
     background: rgba(217, 217, 217, 0.08);
     border: .1rem solid white;
@@ -42,6 +42,8 @@
     margin-right: .5rem;
     border-radius: .7rem;
     border: black;
+    height: 13rem;
+    width: 18rem;
 }
 
 .name {

@@ -28,6 +28,13 @@ const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //a
 
 if (loader === true) {
     return (
+        <div>
+                <div className={style.pagination}>
+                 <Pagination 
+                 recipesPerPage={recipesPerPage} 
+                 recetas={recetas.length} 
+                 currentPage={currentPage}/>
+                </div>
         <div className={style.container}>
             <div className={style.searchBar}>
                 <SideBar/>
@@ -42,12 +49,7 @@ if (loader === true) {
                     id = {r.id}
                     />))}
             </div>
-                <div className={style.pagination}>
-                 <Pagination 
-                 recipesPerPage={recipesPerPage} 
-                 recetas={recetas.length} 
-                 currentPage={currentPage}/>
-                </div>
+        </div>
         </div>
     )
     } else {

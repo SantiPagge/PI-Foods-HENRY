@@ -19,7 +19,7 @@ const validations = (form) => {
     if(!form.image) {
         errors.image = 'Please insert a URL for the image.'
     }
-    if(!form.diets){
+    if(!form.diets.length){
         errors.diets = 'Please select at least one type of diet.'
     }
     return errors;

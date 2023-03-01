@@ -1,10 +1,10 @@
 .nav {
     height: 3rem;
     background-color: black;
-    color: black;
     border-color: yellow;
-    padding: 0px;
     margin: 0px;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .exitButton {

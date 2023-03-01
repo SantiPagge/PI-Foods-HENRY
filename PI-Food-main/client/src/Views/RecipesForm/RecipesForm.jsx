@@ -4,10 +4,12 @@ import { traerDietas } from "../../redux/actions";
 import validations from "./validations";
 import axios from "axios";
 import style from '../RecipesForm/RecipesForm.module.css'
+import { useHistory } from "react-router-dom";
 
 export const RecipesForm = () => {
     
     const dispatch = useDispatch()
+    const history = useHistory()
 
     useEffect(() =>{
         dispatch(traerDietas())
@@ -28,7 +30,7 @@ export const RecipesForm = () => {
     console.log(diets)
     
 
-    const [error, setError] = useState({});
+    const [error, setError] = useState('');
 
     const handleName = (event) => {
         setForm({
@@ -122,13 +124,15 @@ export const RecipesForm = () => {
             image: '',
             diets: []
         }))
+        alert('The recipe has been created.')
+        history.push('/home')
     }
     // console.log(form);
     
     useEffect(() => {
         setError(validations(form))
     }, [form])
-
+console.log(error);
 
     return (
         <div>
@@ -136,27 +140,27 @@ export const RecipesForm = () => {
             <div>
                 <label htmlFor="name">Name: </label>
                 <input type='text' id='name' value={form.name} onChange={handleName}></input>
-                {error.name && <p style={{color: 'red'}} >{error.name}</p>}
+                {error.name && <p className={style.errorMessage} >{error.name}</p>}
             </div>
             <div>
                 <label htmlFor="summary">Summary: </label>
                 <textarea id="summary" value={form.summary} onChange={handleSummary}></textarea>
-                {error.summary && <p style={{color: 'red'}} >{error.summary}</p>}
+                {error.summary && <p className={style.errorMessage} >{error.summary}</p>}
             </div>
             <div>
                 <label htmlFor="healt-Score">HealthScore: </label>
-                <input type='number' max='100' min='0' id='health-Score' value={form.healthScore} onChange={handleHealthScore}></input>
-                {error.healthScore && <p style={{color: 'red'}} >{error.healthScore}</p>}
+                <input type='number' pattern="^[0-9]\d*$" max='100' min='0' id='health-Score' value={form.healthScore} onChange={handleHealthScore}></input>
+                {error.healthScore && <p className={style.errorMessage} >{error.healthScore}</p>}
             </div>
             <div>
                 <label htmlFor="steps">Steps: </label>
                 <textarea id="steps" value={form.steps} onChange={handleSteps}></textarea>
-                {error.steps && <p style={{color: 'red'}} >{error.steps}</p>}
+                {error.steps && <p className={style.errorMessage} >{error.steps}</p>}
             </div>
             <div>
                 <label htmlFor="image">Image: </label>
                 <input type='text' id='image' value={form.image} onChange={handleImage}></input>
-                {error.image && <p style={{color: 'red'}} >{error.image}</p>}
+                {error.image && <p className={style.errorMessage} >{error.image}</p>}
             </div>
             <span>Diets: </span>
                 <div>
@@ -170,9 +174,10 @@ export const RecipesForm = () => {
                             {option.name}
                         </label>
                     ))}
+                    {error.diets && <p className={style.errorMessage} >{error.diets}</p>}
                 </div>
                 <div>
-                    <button type="submit">Create Recipe</button>
+                    <button type="submit" disabled={(!form.name || !form.summary || !form.steps || !form.healthScore || !form.diets.length || !form.image )? true : false}>Create Recipe</button>
                 </div>
         </form>
         </div>
