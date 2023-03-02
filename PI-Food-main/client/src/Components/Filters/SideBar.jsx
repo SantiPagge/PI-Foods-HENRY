@@ -26,6 +26,7 @@ const handleChange2 = (event) => {
     const buscar = seleccionadas.find(element => element === name);
     if (buscar) {
       dispatch(setSelected(seleccionadas.filter(dietas => dietas !== name)));
+      props.setCheckboxState(seleccionadas.filter(dietas => dietas !== name))
     } else {
       dispatch(setSelected([...seleccionadas, event.target.value]));
     }
