@@ -1,7 +1,7 @@
 import React from "react";
-import * as actions from "../../redux/actions";
+import style from './pagination.module.css'
+import { changePag } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import "./pagination.module.css"
 
 export const Pagination = (props) => {
  const { recipesPerPage, recetas } = props
@@ -15,26 +15,21 @@ const currentPage = useSelector(state => state.currentPage)
       pages.push(i);
  }
 
-
-
   return (
-    <div className='pagination'>
-      { currentPage !== 1 && recetas2.length >= recipesPerPage ? 
-    <><button onClick={() => dispatch(actions.changePag(currentPage - 1))}>{"<"}</button><button onClick={() => dispatch(actions.changePag(currentPage - 1))}>{currentPage - 1}</button></>
- :     <><button disable>{"<"}</button></>
-}
-
-         <button  className="active">{currentPage}</button>
-
-         { currentPage !== pages[pages.length-1] && recetas2.length >= recipesPerPage ? (
-        <><button onClick={() => dispatch(actions.changePag(currentPage + 1))}>{currentPage + 1}</button><button onClick={() => dispatch(actions.changePag(currentPage + 1))}>
-                    {">"}
-                </button></>
-  ) : (
-
-    <><button disable>||</button></>
-  )
-}
-        </div>
-    );
+    <div className={style.pagination}>
+    { currentPage !== 1 && recetas2.length >= recipesPerPage ? 
+      <><button onClick={() => dispatch(changePag(currentPage - 1))}>{"<"}</button><button onClick={() => dispatch(changePag(currentPage - 1))}>{currentPage - 1}</button></>
+    : <><button disable>{"<"}</button></> 
+    } 
+    <button  className={style.active}>{currentPage}</button>
+    { currentPage !== pages[pages.length-1] && recetas2.length >= recipesPerPage ? (
+      <><button onClick={() => dispatch(changePag(currentPage + 1))}>{currentPage + 1}</button><button onClick={() => dispatch(changePag(currentPage + 1))}>
+      {">"}</button></>
+    ) 
+    : (
+        <><button disable>||</button></>
+      )
+    }
+    </div>
+  );
 };
