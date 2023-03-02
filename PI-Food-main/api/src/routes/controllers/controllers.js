@@ -141,8 +141,7 @@ const showDiets = async () => {
     //------------------------------------------------------------------------------------
 
 
-    let ruta = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`,
-      { headers: { "Accept-Encoding": "gzip,deflate,compress" }})
+    let ruta = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
     
     // let ruta = `https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`;
 
