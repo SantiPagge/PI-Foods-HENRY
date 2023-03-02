@@ -9,7 +9,7 @@ import style from './Detail.module.css'
 
 export const Detail = (props) => {
     
-    const noHaySteps = `This recipe don't have steps.`
+    const noHaySteps = `This recipe doesn't have steps.`
     const dispatch = useDispatch();
     const detailId = useSelector(state => state.recetaId);
     const { id } = useParams();
@@ -45,7 +45,7 @@ if (detailId.id){
                             <h4 className={style.detailDishtypes}>{detailId?.dishTypes?.map((dishT) => dishT).join(', ')}</h4>
                             <h4 className={style.healthScore}>HealthScore: {detailId?.healthScore}</h4>
                             <Link to='/home' onClick={() => regresar()}>
-                                <button className={style.button}>Back</button>
+                                <button className={style.backButton}>Back</button>
                             </Link>
                         </div>
                 </div>

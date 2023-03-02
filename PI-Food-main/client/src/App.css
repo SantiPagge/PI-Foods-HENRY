@@ -1,8 +1,12 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  background-image: url('../src/assets/Mesa.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -39,4 +43,4 @@
 
 * {
   text-decoration: 0;
-}
+} */

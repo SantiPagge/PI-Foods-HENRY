@@ -1,6 +1,7 @@
 import axios from 'axios';
-import './App.css';
+// import './App.css';
 import React from 'react';
+import style from './App.css'
 import { useLocation } from 'react-router'
 import { Route, Switch } from 'react-router';
 import { Welcome } from './Views/Welcome/Welcome';
@@ -15,7 +16,7 @@ axios.defaults.baseURL = 'http://localhost:3001';
 function App() {
   const location = useLocation()
   return (
-    <div className="App">
+    <div className={style.App}>
  {location.pathname === '/home' || location.pathname === '/create' || location.pathname === '/detail/:id' ? <Nav/> : null}
     <Switch>
       <Route exact path='/' component={Welcome}/>

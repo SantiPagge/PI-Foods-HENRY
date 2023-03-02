@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const { queryRecipe, recipeId, postRecipe } = require('../controllers/controllers');
-const { Recipe, Diets } = require('../../db');
 
 const recipesRoute = Router();
 

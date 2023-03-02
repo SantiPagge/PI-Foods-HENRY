@@ -10,14 +10,11 @@ export const SearchBar = (props) =>{
 
 return (
     <div>
-      
-      <input className={style.Search}
+      <input className={style.search}
         placeholder="Search the recipe."  
         type="text"
         onChange={props.handleChange}
-        value={search}
-      />
-      
+        value={search}/>
     </div>
   );
 };

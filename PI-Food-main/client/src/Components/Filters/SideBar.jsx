@@ -5,7 +5,6 @@ import { HealthScoreFilter } from './FilterTypes/HealthScoreFilter';
 import { useDispatch, useSelector } from "react-redux";
 import { setSelected, filterByDiets, setSearch } from '../../redux/actions';
 import style from "./SideBar.module.css";
-import { SearchBar } from './SearchBar';
 import { useEffect } from "react";
 
 
@@ -31,6 +30,18 @@ const handleChange2 = (event) => {
       dispatch(setSelected([...buscar, event.target.value]))
   }
   };
+
+  // const handleChange2 = (event) => {
+
+  //   const name = event.target.value
+  //   const buscar = seleccionadas.find(element => element === name)
+  //   if(buscar){
+  //     dispatch(setSelected(seleccionadas.filter(dietas => dietas !== name)))
+  //     props.setCheckboxState(seleccionadas.filter(dietas => dietas !== name))
+  //   }else{
+  //     dispatch(setSelected([...seleccionadas, event.target.value]))
+  // }
+  // };
   
  const filtroDietas = (seleccionadas, dietas) =>{
     for(const id of seleccionadas){
@@ -41,11 +52,6 @@ const handleChange2 = (event) => {
    } 
    const filtro = recetas2?.filter((element) => filtroDietas(seleccionadas, element.diets) && element.name?.toLowerCase().includes(search)) 
   
-//barrra de busqueda
-const handleChange =(event) => { 
-    event.preventDefault() 
-    dispatch(setSearch(event.target.value))
-}
 
 useEffect(() => {
 
@@ -59,23 +65,17 @@ useEffect(() => {
 }
 
 
-    return (
-        <div>
+  return (
+    <div className={style.container}>
         <div className={style.side}>
-        <div className={style.filterConteiner}>
-            <SearchBar handleChange={handleChange} className= {style.filter} />
-            <DesAsc className={style.filter}/>
-
-            <HealthScoreFilter className={style.filter}/>
-            <h4>Diets:</h4>
-            <FilterDiets handleChange2={handleChange2}  />
-            <button className={style.button} onClick={(event) => handleClick(event)}><p>Reset Filters</p></button>
-   
-
+          <div className={style.filterContainer}>
+              <DesAsc className={style.desAsc}/>
+              <HealthScoreFilter className={style.healthScore}/>
+              <h4 className={style.dietsText}>Diets:</h4>
+              <FilterDiets className={style.diets} handleChange2={handleChange2}/>
+              <button className={style.resetButton} onClick={(event) => handleClick(event)}><p>Reset Filters</p></button>
+          </div>
         </div>
-        </div>
-
-        </div>
-
-    )
+    </div>
+  )
 }

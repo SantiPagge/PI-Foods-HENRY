@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import style from './Welcome.module.css'
 import foods from '../../assets/foods.mp4'
 
-export const Welcome = (props) => {
+export const Welcome = () => {
 
     return (
         <div className={style.main}>

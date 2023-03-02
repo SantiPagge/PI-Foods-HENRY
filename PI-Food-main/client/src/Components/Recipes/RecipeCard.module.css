@@ -1,21 +1,8 @@
-.container {
-    background-color: grey;
-}
-
-/* .card {
-    width: 190px;
-    height: 254px;
-    border-radius: 30px;
-    background: #e0e0e0;
-    box-shadow: 15px 15px 30px #bebebe,
-               -15px -15px 30px #ffffff;
-  } */
-
-  .card {
+.card {
     box-sizing: border-box;
     width: 20rem;
     height: 27rem;
-    background: rgba(217, 217, 217, 0.08);
+    background: none;
     border: .1rem solid white;
     box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.50);
     backdrop-filter: blur(6px);
@@ -41,25 +28,26 @@
     margin-left: .5rem;
     margin-right: .5rem;
     border-radius: .7rem;
-    border: black;
+    border: 2px solid black;
     height: 13rem;
     width: 18rem;
 }
 
 .name {
-    color: #edf2f4;
-    text-shadow: 5px 5px 5px rgb(29, 29, 29);
+    color: black;
+    text-shadow: 2px 2px 5px rgb(29, 29, 29);
+    margin-top: .8rem;
 }
 
 .diets {
-    color: #dad7cd;
-    text-shadow: 5px 5px 5px rgb(15, 15, 15);
+    color: black;
+    text-shadow: 2px 2px 5px rgb(15, 15, 15);
     margin-bottom: 5px;
 }
 
 .healthScore {
-    color: #dad7cd;
-    text-shadow: 5px 5px 5px rgb(15, 15, 15);
-    margin-bottom: 5px;
+    color: black;
+    text-shadow: 2px 2px 5px rgb(15, 15, 15);
+    margin-top: 10px;
     font-size: 1rem;
 }
