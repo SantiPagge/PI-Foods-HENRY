@@ -14,8 +14,8 @@ export const Nav = () => {
         setCurrentPage(1)
     }
 
-    const handleChange =(event) => { 
-    event.preventDefault() 
+    const handleChange = (event) => { 
+    event.preventDefault()
     dispatch(setSearch(event.target.value))
 }
 

@@ -17,7 +17,7 @@
     color: rgb(5, 4, 4); 
     cursor: pointer;
     transition: all 0.3s ease;
-  box-shadow: 0 5px 25px rgb(105, 104, 104);
+    box-shadow: 0 5px 25px rgb(105, 104, 104);
 
 }
 

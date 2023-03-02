@@ -15,7 +15,7 @@ export const Home = () => {
     const currentPage = useSelector(state => state.currentPage);
     const loader = useSelector(state => state.loader);
 
-    useEffect(async () => {
+    useEffect( async () => {
         dispatch(loading())
         await dispatch(traerReceta())
         dispatch(loading())
@@ -26,7 +26,7 @@ const indexOfLastRecipe = currentPage * recipesPerPage; //pagina x cantidad  rec
 const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
 const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //agarra el indice de la primer y ultima receta
 
-// if (loader === true) {
+if (loader === true) {
     return (
         <div className={style.background}>
             <div>
@@ -39,7 +39,7 @@ const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //a
                     </div>
                 </div>
                     <div className={style.sideBar}>
-                            <SideBar/>
+                        <SideBar/>
                     </div>
                         <div className={style.cards}>
                             {currentRecipes?.map((r, index) => (<RecipeCard
@@ -49,14 +49,14 @@ const currentRecipes = recetas.slice(indexOfFirstRecipe, indexOfLastRecipe); //a
                                 diets = {r.diets}
                                 healthScore = {r.healthScore}
                                 id = {r.id}
-                                />))}
+                            />))}
                         </div>
             </div>
         </div>
     )
-    // } else {
-    //     return (
-    //         <Loader/>
-    //     )
-    // }
+    } else {
+        return (
+            <Loader/>
+        )
+    }
 }

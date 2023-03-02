@@ -16,14 +16,14 @@ axios.defaults.baseURL = 'http://localhost:3001';
 function App() {
   const location = useLocation()
   return (
-    <div className={style.App}>
+    <div className={style.all}>
  {location.pathname === '/home' || location.pathname === '/create' || location.pathname === '/detail/:id' ? <Nav/> : null}
-    <Switch>
-      <Route exact path='/' component={Welcome}/>
-      <Route exact path='/home' component={Home}/>
-      <Route path='/create' component={RecipesForm}/>
-      <Route path='/detail/:id' component={Detail}/>
-    </Switch>
+        <Switch>
+          <Route exact path='/' component={Welcome}/>
+          <Route exact path='/home' component={Home}/>
+          <Route path='/create' component={RecipesForm}/>
+          <Route path='/detail/:id' component={Detail}/>
+        </Switch>
     </div>
   );
 }

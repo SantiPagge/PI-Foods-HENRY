@@ -7,3 +7,72 @@ textarea {
     border-color: black;
 }
 
+.form {
+    margin-top: 2rem;
+    margin-left: 25rem;
+    margin-right: 25rem;
+    padding: 2rem;
+    border: 1px solid white;
+    border-radius: 3rem;
+    backdrop-filter: blur(3px);
+}
+
+.createName {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.createSummary {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.createHealthScore {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.createSteps {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.createImage {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.createDietsText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.createDiets {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.createButton {
+    background-color: #c67e45;
+    border-color: #565656;
+    color: black;
+    border-radius: .5rem;
+    display: flex;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+    margin-top: .7rem;
+    margin-left: 12.5rem;
+    box-shadow: -5px 5px 15px black;
+}

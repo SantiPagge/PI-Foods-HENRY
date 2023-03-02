@@ -135,52 +135,62 @@ export const RecipesForm = () => {
 console.log(error);
 
     return (
-        <div>
-        <form onSubmit={handleSubmit} className={style.form}>
-            <div>
-                <label htmlFor="name">Name: </label>
-                <input type='text' id='name' value={form.name} onChange={handleName}></input>
-                {error.name && <p className={style.errorMessage} >{error.name}</p>}
+        <div className={style.container}>
+                <form onSubmit={handleSubmit} className={style.form}>
+                    <div className={style.createName}>
+                        <label htmlFor="name">Name: </label>
+                        <br/>
+                        <input type='text' id='name' value={form.name} onChange={handleName}></input>
+                        <br/>
+                        {error.name && <p className={style.errorMessage} >{error.name}</p>}
+                    </div>
+                    <div className={style.createSummary}>
+                        <label htmlFor="summary">Summary: </label>
+                        <br/>
+                        <textarea id="summary" value={form.summary} onChange={handleSummary}></textarea>
+                        <br/>
+                        {error.summary && <p className={style.errorMessage} >{error.summary}</p>}
+                    </div>
+                    <div className={style.createHealthScore}>
+                        <label htmlFor="healt-Score">HealthScore: </label>
+                        <br/>
+                        <input type='number' pattern="^[0-9]\d*$" max='100' min='0' id='health-Score' value={form.healthScore} onChange={handleHealthScore}></input>
+                        <br/>
+                        {error.healthScore && <p className={style.errorMessage} >{error.healthScore}</p>}
+                    </div>
+                    <div className={style.createSteps}>
+                        <label htmlFor="steps">Steps: </label>
+                        <br/>
+                        <textarea id="steps" value={form.steps} onChange={handleSteps}></textarea>
+                        <br/>
+                        {error.steps && <p className={style.errorMessage} >{error.steps}</p>}
+                    </div>
+                    <div className={style.createImage}>
+                        <label htmlFor="image">Image: </label><br/>
+                        <input type='text' id='image' value={form.image} onChange={handleImage}></input>
+                        <br/>
+                        {error.image && <p className={style.errorMessage} >{error.image}</p>}
+                    </div>
+                    <span className={style.createDietsText}>Diets: </span>
+                        <div className={style.createDiets}>
+                            {diets?.map((option, index) => (
+                                <label key={index}>
+                                    <input
+                                        type="checkbox"
+                                        value={option.name}
+                                        id={option.id}
+                                        onChange={handleDiets}/>
+                                    {option.name}
+                                </label>
+                            ))}
+                            <br/>
+                            {error.diets && <p className={style.errorMessage} >{error.diets}</p>}
+                        </div>
+                        <div>
+                            <button className={style.createButton} type="submit" disabled={(!form.name || !form.summary || !form.steps || !form.healthScore || !form.diets.length || !form.image )? true : false}>Create Recipe</button>
+                        </div>
+                </form>
             </div>
-            <div>
-                <label htmlFor="summary">Summary: </label>
-                <textarea id="summary" value={form.summary} onChange={handleSummary}></textarea>
-                {error.summary && <p className={style.errorMessage} >{error.summary}</p>}
-            </div>
-            <div>
-                <label htmlFor="healt-Score">HealthScore: </label>
-                <input type='number' pattern="^[0-9]\d*$" max='100' min='0' id='health-Score' value={form.healthScore} onChange={handleHealthScore}></input>
-                {error.healthScore && <p className={style.errorMessage} >{error.healthScore}</p>}
-            </div>
-            <div>
-                <label htmlFor="steps">Steps: </label>
-                <textarea id="steps" value={form.steps} onChange={handleSteps}></textarea>
-                {error.steps && <p className={style.errorMessage} >{error.steps}</p>}
-            </div>
-            <div>
-                <label htmlFor="image">Image: </label>
-                <input type='text' id='image' value={form.image} onChange={handleImage}></input>
-                {error.image && <p className={style.errorMessage} >{error.image}</p>}
-            </div>
-            <span>Diets: </span>
-                <div>
-                    {diets?.map((option, index) => (
-                        <label key={index}>
-                            <input
-                                type="checkbox"
-                                value={option.name}
-                                id={option.id}
-                                onChange={handleDiets}/>
-                            {option.name}
-                        </label>
-                    ))}
-                    {error.diets && <p className={style.errorMessage} >{error.diets}</p>}
-                </div>
-                <div>
-                    <button type="submit" disabled={(!form.name || !form.summary || !form.steps || !form.healthScore || !form.diets.length || !form.image )? true : false}>Create Recipe</button>
-                </div>
-        </form>
-        </div>
     )
 
 }
