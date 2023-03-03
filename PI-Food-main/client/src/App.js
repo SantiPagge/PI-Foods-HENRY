@@ -7,8 +7,8 @@ import { Home } from './Views/Home/Home'
 import { Detail } from './Views/Details/Detail'
 import { RecipesForm } from './Views/RecipesForm/RecipesForm';
 
-// axios.defaults.baseURL = "https://pi-foods-henry-production-95c1.up.railway.app/";
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = "pi-foods-henry-production-ec7e.up.railway.app/";
+// axios.defaults.baseURL = 'http://localhost:3001';
 
 function App() {
   return (
