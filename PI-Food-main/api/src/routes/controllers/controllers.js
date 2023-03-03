@@ -10,7 +10,7 @@ const searchInApi = async () => {
         // const searchInApiRequest = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
         const searchInApiRequest = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`,
       { headers: { "Accept-Encoding": "gzip,deflate,compress" }})
-    //  )      PARA LOS LLAMADOS LIMITADOS, USAR ESTO PARA LA CORRECCION
+    // PARA LOS LLAMADOS LIMITADOS, USAR ESTO PARA LA CORRECCION
 
         let info = await searchInApiRequest.data.results?.map((element) => {
             return{
@@ -112,37 +112,6 @@ const recipeId = async (id) => {
 
 // Mostrar dietas
 const showDiets = async () => {
-
-
-    //-----------------------------------HARDCODED-------------------------------------------------------
-    // const allDiets = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
-    // const dietTypes = allDiets.map((recipe) => recipe.diet.map((e) => e))
-    // console.log(dietTypes);
-    // const dietTypes = [
-    //     "gluten free", //
-    //     "ketogenic", //
-    //     "lacto ovo vegetarian", //
-    //     "vegan", //
-    //     "pescatarian", //
-    //     "paleolithic", //
-    //     "primal",//
-    //     "fodmap friendly", //
-    //     "whole 30", //
-    //     "dairy free", //
-    // ];
-    // dietTypes.forEach((diet) => {
-    //     Diets.findOrCreate({
-    //         where: {
-    //             name: diet
-    //         }
-    //     })
-    // })
-    // return Diets.findAll();
-    //------------------------------------------------------------------------------------
-
-
-    // `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
-    // `https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`;
 
     const isEmpty = await Diets.findAll();
     if(!isEmpty.length){
