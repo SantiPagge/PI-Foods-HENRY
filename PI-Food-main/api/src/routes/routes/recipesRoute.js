@@ -31,7 +31,7 @@ recipesRoute.post('/', async (req, res) => {
 });
 
 recipesRoute.get('/:id', async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.query;
     try {
         const idReceta = await recipeId(id);
         res.status(200).json(idReceta);
