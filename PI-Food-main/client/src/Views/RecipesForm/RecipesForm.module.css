@@ -8,13 +8,14 @@ textarea {
 }
 
 .form {
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-left: 25rem;
     margin-right: 25rem;
     padding: 2rem;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 3rem;
     backdrop-filter: blur(3px);
+    margin-bottom: 1rem;
 }
 
 .createName {

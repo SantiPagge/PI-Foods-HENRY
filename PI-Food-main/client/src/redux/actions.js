@@ -80,14 +80,6 @@ export const recetaId = (id) => {
     }
 };
 
-
-export const check = (payload) => {
-    return {
-        type: 'CHECK',
-        payload
-    }
-};
-
 export const postRecipes = (payload) => {
     return async function (dispatch) {
         try {

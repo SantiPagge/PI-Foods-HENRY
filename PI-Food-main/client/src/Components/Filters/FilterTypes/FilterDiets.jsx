@@ -12,7 +12,7 @@ export const FilterDiets = (props) => {
   useEffect(() =>{
       if(!diets.length){
           dispatch(traerDietas())
-      }
+        }
   }, [dispatch]);
 
   return (

@@ -1,23 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import style from './Nav.module.css';
 import { Link } from 'react-router-dom';
 import { SearchBar } from '../Filters/FilterTypes/SearchBar'
-import { setSearch } from "../../redux/actions";
+import { changePag, setSearch } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 export const Nav = () => {
     const dispatch = useDispatch();
 
-    const [currentPage, setCurrentPage] = useState(1);
-
     const handleHomeButton = () => {
-        setCurrentPage(1)
+        dispatch(changePag(1))
     }
 
     const handleChange = (event) => { 
-    event.preventDefault()
-    dispatch(setSearch(event.target.value))
-}
+        event.preventDefault()
+        dispatch(changePag(1))
+        dispatch(setSearch(event.target.value))
+    }
 
     return (
         <nav className={style.nav}>

@@ -5,6 +5,7 @@ import validations from "./validations";
 import axios from "axios";
 import style from '../RecipesForm/RecipesForm.module.css'
 import { useHistory } from "react-router-dom";
+import { Nav2 } from "../../Components/Nav2/Nav2";
 
 export const RecipesForm = () => {
     
@@ -27,7 +28,7 @@ export const RecipesForm = () => {
         diets: []
     });
 
-    console.log(diets)
+    // console.log(diets)
     
 
     const [error, setError] = useState('');
@@ -136,6 +137,7 @@ console.log(error);
 
     return (
         <div className={style.container}>
+            <Nav2/>
                 <form onSubmit={handleSubmit} className={style.form}>
                     <div className={style.createName}>
                         <label htmlFor="name">Name: </label>

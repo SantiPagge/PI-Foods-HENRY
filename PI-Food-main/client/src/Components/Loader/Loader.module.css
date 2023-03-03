@@ -2,8 +2,8 @@
   background-image: url('../../assets/pizza.gif');
   background-repeat: no-repeat;
   position: absolute;
-  margin-top: 7rem;
-  margin-left: 33rem;
+  top: 6rem;
+  left: 26rem;
   padding-top: 25rem;
-  padding-left: 45rem;
+  padding-left: 40rem;
 }

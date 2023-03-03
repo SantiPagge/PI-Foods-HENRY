@@ -15,7 +15,7 @@ export const Welcome = () => {
                     <div className={style.spanWelcome}>
                         <span> Welcome to the Henry's Food Market </span>
                     </div>
-                    <Link to='home'><button className={style.welcomeButton}>Lets Cook!</button></Link>
+                    <Link className={style.link} to='home'><button className={style.welcomeButton}>Lets Cook!</button></Link>
                 </section>
             </div>
         </div>

@@ -13,6 +13,5 @@ export const FILTRO_CREADO = 'FILTRO_CREADO';
 export const MODIFICAR_RECETA = "MODIFICAR_RECETA";
 export const SET_SELECTED = "SET_SELECTED";
 export const SEARCH = "SEARCH";
-export const CHECK = 'CHECK';
 export const LIMPIAR_DETAIL = 'LIMPIAR_DETAIL'
 export const LOADER = 'LOADER'

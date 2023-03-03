@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export const RecipeCard = ({ id, name, healthScore, image, diets }) => {
 
     return (
-        <Link to = {`/detail/${id}`}>
+        <Link to = {`/detail/${id}`} className={style.link}>
             <div className={style.container}>
                 <div className={style.card}>
                     <img className={style.image} src={image} alt='not found'/>

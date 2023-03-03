@@ -3,7 +3,7 @@ import { FilterDiets } from '../Filters/FilterTypes/FilterDiets';
 import { DesAsc } from './FilterTypes/DesAsc';
 import { HealthScoreFilter } from './FilterTypes/HealthScoreFilter';
 import { useDispatch, useSelector } from "react-redux";
-import { setSelected, filterByDiets } from '../../redux/actions';
+import { setSelected, filterByDiets, changePag } from '../../redux/actions';
 import style from "./SideBar.module.css";
 import { useEffect } from "react";
 
@@ -24,6 +24,7 @@ const search = useSelector(state => state.search);
 const handleChange2 = (event) => {
     const name = event.target.value;
     const buscar = seleccionadas.find(element => element === name);
+    dispatch(changePag(1))
     if (buscar) {
       dispatch(setSelected(seleccionadas.filter(dietas => dietas !== name)));
     } else {

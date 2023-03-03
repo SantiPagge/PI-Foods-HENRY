@@ -7,9 +7,9 @@ const { API_KEY } = process.env;
 // mapeo la api
 const searchInApi = async () => {
     try {
-        const searchInApiRequest = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
-    //     const searchInApiRequest = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`,
-    //   { headers: { "Accept-Encoding": "gzip,deflate,compress" }})
+        // const searchInApiRequest = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
+        const searchInApiRequest = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`,
+      { headers: { "Accept-Encoding": "gzip,deflate,compress" }})
     //  )      PARA LOS LLAMADOS LIMITADOS, USAR ESTO PARA LA CORRECCION
 
         let info = await searchInApiRequest.data.results?.map((element) => {
@@ -141,14 +141,14 @@ const showDiets = async () => {
     //------------------------------------------------------------------------------------
 
 
-    // let ruta = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
-    
-    let ruta = `https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`;
+    // `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+    // `https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`;
 
     const isEmpty = await Diets.findAll();
     if(!isEmpty.length){
       let recetas = ["vegetarian"];
-      const peticion = await axios.get(ruta);
+      const peticion = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
+    //   const peticion = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`);
       let data = await peticion.data.results; //data Es Un Array De Objetos De Recetas
 
       data.forEach((elem) => {

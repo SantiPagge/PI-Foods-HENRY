@@ -1,4 +1,4 @@
-import { TRAER_RECETAS, POST_RECIPE, MODIFICAR_RECETA, LOADER, VACIAR_ID, SEARCH, SET_SELECTED, TRAER_DIETAS, FILTER_BY_DIETS, SORT_BY_NAME, FILTRO_SCORE, CHECK, RECETA_ID, LIMPIAR_DETAIL, CHANGE_PAG } from './action-types';
+import { TRAER_RECETAS, POST_RECIPE, MODIFICAR_RECETA, LOADER, VACIAR_ID, SEARCH, SET_SELECTED, TRAER_DIETAS, FILTER_BY_DIETS, SORT_BY_NAME, FILTRO_SCORE, RECETA_ID, LIMPIAR_DETAIL, CHANGE_PAG } from './action-types';
 
 const initialState = {
     recetas: [],
@@ -8,7 +8,6 @@ const initialState = {
     recetaId: [],
     seleccionadas: [],
     search: '',
-    check: false,
     loader: true
 };
 
@@ -98,11 +97,6 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 search: action.payload
-            }
-        case CHECK:
-            return {
-                ...state,
-                check: action.payload
             }
         case POST_RECIPE:
             return {

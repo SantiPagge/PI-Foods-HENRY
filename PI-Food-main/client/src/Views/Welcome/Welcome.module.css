@@ -96,3 +96,7 @@ body {
     z-index: 0;
     object-fit: cover;
 }
+
+.link {
+    text-decoration: none;
+}
