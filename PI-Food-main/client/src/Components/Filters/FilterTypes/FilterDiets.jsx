@@ -19,7 +19,7 @@ export const FilterDiets = (props) => {
     <div className={style.dietasContainer}>
         {diets?.map((diet) => {
             return (
-            <div className={style.box} key={diet.name}>
+            <div className={style.box} key={diet.id}>
                 <input
                     className={style.checkBox}
                     type='checkbox'
