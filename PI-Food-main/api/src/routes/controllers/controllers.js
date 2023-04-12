@@ -1,7 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
 const { Recipe, Diets } = require('../../db');
-const { API_KEY } = process.env;
+// const { API_KEY } = process.env;
 
 
 // mapeo la api
