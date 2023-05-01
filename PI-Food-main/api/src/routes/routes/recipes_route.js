@@ -3,20 +3,15 @@ const { queryRecipe, recipeId, postRecipe } = require('../controllers/controller
 
 const recipesRoute = Router();
 
-<<<<<<< HEAD:PI-Food-main/api/src/routes/routes/recipes_route.js
-
-router.get('/', async (req, res) => {
-=======
 recipesRoute.get('/', async (req, res) => {
->>>>>>> 70f6b35df33f3779cda6b06c75e7898cd09615ba:PI-Food-main/api/src/routes/routes/recipesRoute.js
     const { name } = req.query;
     try {
         if(name){
             const show = await queryRecipe(name)
-            res.status(200).send(show);
+            res.status(200).json(show);
         } else {
             const all = await queryRecipe();
-            res.status(200).send(all)
+            res.status(200).json(all)
         }
     } catch (error) {
         res.status(400).send(error);
