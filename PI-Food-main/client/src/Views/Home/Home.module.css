@@ -1,0 +1,31 @@
+.background {
+    position: relative;
+    display: grid;
+}
+
+.cards {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin-left: 10rem;
+}
+
+.sideBar {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    margin-left: 1rem;
+
+}
+
+.pagination {
+    position: relative;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+}

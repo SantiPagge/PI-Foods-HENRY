@@ -1,54 +1,26 @@
+require('dotenv').config();
 const axios = require('axios');
 const { Recipe, Diets } = require('../../db');
-
-
-//     "results": [{
-//         "vegetarian": true,
-//         "vegan": true,
-//         "glutenFree": true,
-//         "dairyFree": true,
-//         "veryHealthy": true,
-//         "cheap": false,
-//         "veryPopular": true,
-//         "sustainable": false,
-//         "lowFodmap": false,
-//         "weightWatcherSmartPoints": 4,
-//         "gaps": "no",
-//         "preparationMinutes": -1,
-//         "cookingMinutes": -1,
-//         "aggregateLikes": 3689,
-//         "healthScore": 76,
-//         "creditsText": "Full Belly Sisters",
-//         "license": "CC BY-SA 3.0",
-//         "sourceName": "Full Belly Sisters",
-//         "pricePerServing": 112.39,
-//         "id": 716426,
-//         "title": "Cauliflower, Brown Rice, and Vegetable Fried Rice",
-//         "readyInMinutes": 30,
-//         "servings": 8,
-//         "sourceUrl": "http://fullbellysisters.blogspot.com/2012/01/cauliflower-fried-rice-more-veggies.html",
-//         "image": "https://spoonacular.com/recipeImages/716426-312x231.jpg",
-//         "imageType": "jpg",
-//         "summary":
+const { API_KEY } = process.env;
 
 
 // mapeo la api
 const searchInApi = async () => {
     try {
-        const searchInApiRequest = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
-        // const BuscarenApi = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=66aca8f51d11492e84ea329eccc1bd71&addRecipeInformation=true&number=100`,
-    //   { headers: { "Accept-Encoding": "gzip,deflate,compress" }}
-    //  )      PARA LOS LLAMADOS LIMITADOS, USAR ESTO PARA LA CORRECCION
+        // const searchInApiRequest = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
+        const searchInApiRequest = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`,
+      { headers: { "Accept-Encoding": "gzip,deflate,compress" }})
+    // PARA LOS LLAMADOS LIMITADOS, USAR ESTO PARA LA CORRECCION
 
         let info = await searchInApiRequest.data.results?.map((element) => {
             return{
                 id: element.id,
                 name: element.title,
-                summary: element.summary,
-                healthScore: element.healthScore,
                 image: element.image,
-                dishTypes: element.dishTypes?.map(element => element),
                 diets: element.diets?.map(element => element),
+                healthScore: element.healthScore,
+                summary: element.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ""),
+                dishTypes: element.dishTypes?.map(element => element),
                 steps: element.analyzedInstructions[0]?.steps.map((element) => `${element.number} ${element.step}`).join(' '),
             }
         })
@@ -77,11 +49,12 @@ const searchInDb = async () => {
             return {
                 id: element.id,
                 name: element.name,
-                summary: element.summary,
-                healthScore: element.healthScore,
                 image: element.image,
+                healthScore: element.healthScore,
+                diets: element.diets?.map(element => element.name),
+                summary: element.summary,
                 steps: element.steps,
-                diets: element.diets?.map(element => element.name)
+                createdInDb: element.createdInDb
             }
         }) 
     return infoDb;
@@ -108,18 +81,16 @@ const dbApi = async () => {
 //receta por query y todas si no hay query
 const queryRecipe = async (recipe) => {
     try {
-    //const agregarlas =  await info.filter((ele) => ele.name === receta)
-    //const agregaradb = await Recipe.findOrCreate(agregarlas) ME CAGO EN HENRY ERA MAS FACIL
     if(recipe){
         const searchRecipe = await dbApi();
-        const result = searchRecipe.filter((element) => element.name.toLowerCase().includes(recipe.toLowerCase()) === true)
+        const result = searchRecipe.filter((element) => element.name.toLowerCase().includes(recipe.toLowerCase()))
         if(result.length) return result;
     } else {
         const all = await dbApi();
         return all;
     }
 
-    throw (`We don't have data about this recipe`);
+    throw Error (`We don't have data about this recipe`);
 
     } catch (error) {
         return error;
@@ -127,55 +98,53 @@ const queryRecipe = async (recipe) => {
 };
 
 // buscar receta por id
-const recipeId = async (idRecipe) => {
-    try {
-        const searchRecipe = await dbApi();
-        const recipe = searchRecipe.find((element) => element.id === idRecipe);
+const recipeId = async (id) => {
+
+        let searchRecipe = await dbApi();
+        let recipe = searchRecipe.find((element) => element.id == id);
         if(recipe) {
             return recipe;
         } else {
-            throw (`Ups, we don't have a recipe with this id`);
+            throw new Error (`Ups, we don't have a recipe with this id`);
         }
-    } catch (error) {
-        return error;
-    }
 };
 
 
 // Mostrar dietas
 const showDiets = async () => {
-    const dietTypes = [
-        "gluten free", //
-        "ketogenic", //
-        "lacto ovo vegetarian", //
-        "vegan", //
-        "pescatarian", //
-        "paleolithic", //
-        "primal",//
-        "fodmap friendly", //
-        "whole 30", //
-        "dairy free", //
-    ];
-    dietTypes.forEach((diet) => {
-        Diets.findOrCreate({
-            where: {
-                name: diet
-            }
-        })
-    })
-    return Diets.findAll();
+
+    const isEmpty = await Diets.findAll();
+    if(!isEmpty.length){
+      let recetas = ["vegetarian"];
+      const peticion = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
+    //   const peticion = await axios(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`);
+      let data = await peticion.data.results; //data Es Un Array De Objetos De Recetas
+
+      data.forEach((elem) => {
+        recetas = [...recetas, ...elem.diets];
+      });
+      recetas = [...new Set(recetas)];
+      for(let name of recetas){
+        await Diets.create({name: name});
+      }
+      // return recetas;
+      const dietas = await Diets.findAll();
+      return dietas;
+    }else{
+      return isEmpty;
+    }
 };
 
 const postRecipe = async (objRecipe) => {
     try {
-        const { name, summary, healthScore, steps, image, dishTypes, diets } = objRecipe;
+        const { name, summary, healthScore, steps, image, diets } = objRecipe;
         const recipe = {
             name,
-            summary,
-            healthScore,
-            steps,
             image,
-            dishTypes
+            healthScore,
+            summary,
+            steps,
+            diets
         };
 
         const dietInfo = await Diets.findAll({
@@ -190,7 +159,7 @@ const postRecipe = async (objRecipe) => {
         return Recipe.findAll();
 
     } catch (error) {
-        return error;
+        throw Error ('No se creo');
     }
 };
 

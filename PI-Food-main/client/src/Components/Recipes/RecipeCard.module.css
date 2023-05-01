@@ -1,0 +1,57 @@
+.link {
+    text-decoration: none;
+}
+
+.card {
+    box-sizing: border-box;
+    width: 20rem;
+    height: 27rem;
+    background: none;
+    border: .1rem solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.50);
+    backdrop-filter: blur(6px);
+    border-radius: .7rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    align-items: center;
+    justify-content:center;
+    user-select: none;
+    font-weight: bolder;
+    margin: .5rem;
+    padding: .2rem;
+}
+
+.card:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+}
+
+.image {
+    margin-top: .5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    border-radius: .7rem;
+    border: 2px solid black;
+    height: 13rem;
+    width: 18rem;
+}
+
+.name {
+    color: black;
+    text-shadow: 2px 2px 5px rgb(29, 29, 29);
+    margin-top: .8rem;
+}
+
+.diets {
+    color: black;
+    text-shadow: 2px 2px 5px rgb(15, 15, 15);
+    margin-bottom: 5px;
+}
+
+.healthScore {
+    color: black;
+    text-shadow: 2px 2px 5px rgb(15, 15, 15);
+    margin-top: 10px;
+    font-size: 1rem;
+}

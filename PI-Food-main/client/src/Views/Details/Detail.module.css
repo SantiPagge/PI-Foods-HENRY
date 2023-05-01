@@ -1,0 +1,212 @@
+.detailContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.detailImage {
+    display: grid;
+    position: relative;
+    margin-top: 1rem;
+    margin-left: .5rem;
+    height: 30rem;
+    border: .3rem solid black;
+    border-radius: 3rem;
+}
+
+.right {
+    padding-right: 3rem;
+}
+
+.id {
+    display: flex;
+    position: relative;
+    margin-left: 2rem;
+    margin-top: 4.5rem;
+    padding-left: .5rem;
+    border: 1px solid white;
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.name {
+    display: flex;
+    position: relative;
+    margin-left: 2rem;
+    margin-bottom: .1rem;
+    margin-bottom: 0;
+    border: 1px solid white;
+    border-bottom: none;
+    border-top-left-radius: .7rem;
+    border-top-right-radius: .7rem;
+    padding-left: .5rem;
+    padding-top: .1rem;
+    backdrop-filter: blur(10px);
+}
+
+.detailName {
+    display: flex;
+    position: relative;
+    margin-left: 2rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid white;
+    margin-top: 0;
+    border: 1px solid white;
+    border-top: none;
+    border-bottom-left-radius: .7rem;
+    border-bottom-right-radius: .7rem;
+    padding-left: .5rem;
+    padding-bottom: .1rem;
+    backdrop-filter: blur(10px);
+}
+
+.diets {
+    display: flex;
+    position: relative;
+    margin-left: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 0;
+    border: 1px solid white;
+    border-bottom: none;
+    border-top-left-radius: .7rem;
+    border-top-right-radius: .7rem;
+    padding-left: .5rem;
+    padding-top: .1rem;
+    backdrop-filter: blur(10px);
+}
+
+.detailDiets {
+    display: flex;
+    position: relative;
+    margin-left: 2rem;
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+    border: 1px solid white;
+    border-top: none;
+    border-bottom-left-radius: .7rem;
+    border-bottom-right-radius: .7rem;
+    padding-left: .5rem;
+    padding-bottom: .1rem;
+    backdrop-filter: blur(10px);
+}
+
+.dishtypes {
+    display: flex;
+    position: relative;
+    margin-left: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 0px;
+    border: 1px solid white;
+    border-bottom: none;
+    border-top-left-radius: .7rem;
+    border-top-right-radius: .7rem;
+    padding-left: .5rem;
+    padding-top: .1rem;
+    backdrop-filter: blur(10px);
+}
+
+.detailDishtypes {
+    display: flex;
+    position: relative;
+    margin-left: 2rem;
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+    border: 1px solid white;
+    border-top: none;
+    border-bottom-left-radius: .7rem;
+    border-bottom-right-radius: .7rem;
+    padding-left: .5rem;
+    padding-bottom: .1rem;
+    backdrop-filter: blur(10px);
+}
+
+.healthScore {
+    display: flex;
+    position: relative;
+    margin-left: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+    border: 1px solid white;
+    border-radius: 2rem;
+    padding-left: .5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: -5px 5px 7px grey;
+}
+
+.backButton {
+    background-color: #c67e45;
+    border-color: #565656;
+    color: black;
+    width: 5rem;
+    height: 2rem;
+    border-radius: .5rem;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+    margin-top: .7rem;
+    margin-left: 15rem;
+    box-shadow: -5px 5px 15px black;
+}
+
+.backButton:visited {
+    color: white;
+}
+
+.bottomContainer {
+    overflow: hidden;
+}
+
+.summary {
+    margin-bottom: 0rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: 1px solid white;
+    border-bottom: none;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    padding-top: .1rem;
+    padding-left: 38rem;
+    backdrop-filter: blur(10px);
+}
+
+.detailSummary {
+    height: 7rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-bottom: 1px solid white;
+    margin-top: 0;
+    border: 1px solid white;
+    border-top: none;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding-bottom: .1rem;
+    padding-left: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.steps {
+    padding-left: 39rem;
+    margin-bottom: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: 1px solid white;
+    border-bottom: none;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    padding-top: .1rem;
+    backdrop-filter: blur(10px);
+}
+
+.detailSteps {
+    border-bottom: 1px solid white;
+    margin-top: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: 1px solid white;
+    border-top: none;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding-bottom: .2rem;
+    padding-left: 1.5rem;
+    backdrop-filter: blur(10px);
+}

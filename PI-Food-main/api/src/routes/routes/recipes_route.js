@@ -1,10 +1,14 @@
-const { router } = require('express').Router();
+const { Router } = require('express');
 const { queryRecipe, recipeId, postRecipe } = require('../controllers/controllers');
-const { Recipe, Diets } = require('../../db');
 
+const recipesRoute = Router();
 
+<<<<<<< HEAD:PI-Food-main/api/src/routes/routes/recipes_route.js
 
 router.get('/', async (req, res) => {
+=======
+recipesRoute.get('/', async (req, res) => {
+>>>>>>> 70f6b35df33f3779cda6b06c75e7898cd09615ba:PI-Food-main/api/src/routes/routes/recipesRoute.js
     const { name } = req.query;
     try {
         if(name){
@@ -19,13 +23,11 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+recipesRoute.post('/', async (req, res) => {
   try {
     const objRecipe = req.body;
 
-    if(!objRecipe) res.status(404).send('Missing info.');
-
-    const newRecipe = await postRecipe();
+    const newRecipe = await postRecipe(objRecipe);
 
     res.status(201).send(newRecipe);
   } catch (error) {
@@ -33,61 +35,14 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
-    const { idRecipe } = req.params;
+recipesRoute.get('/:id', async (req, res) => {
+    const { id } = req.params;
     try {
-        const idReceta = await recipeId(idRecipe);
+        const idReceta = await recipeId(id);
         res.status(200).json(idReceta);
     } catch (error) {
-        res.status(404).send(error);
+        res.status(404).json(error.message);
     }
 });
 
-router.put('/:id', async (req, res) => {
-    const { id } = req.params;
-    const { name, summary, steps, healthScore, diets, image } = req.body;
-    try {
-        const recipe = await Recipe.findByPk(id);
-        if(!recipe) {
-            return res.status(404).json({error: 'Recipe not found'});
-        }
-
-        await Recipe.update(
-            {
-                name: name,
-                summary: summary,
-                image: image,
-                steps: steps,
-                healthScore: healthScore
-            },
-            {
-                where: {
-                    id: id
-                },
-            }
-        );
-        if (diets.length) {
-            await recipe.setDiets([]);
-            diets.forEach(async (element) => {
-                const diet = await Diets.findOne({
-                    where: {
-                        name: element,
-                    }
-                });
-                if(diet) {
-                    await recipe.addDiet(diet);
-                }
-            });
-        }
-
-        //Obtener la instancia actualizada de la receta
-        const updatedRecipe = await Recipe.findByPk(id, {
-            include: [{ model: Diets }],
-        });
-        return res.status(200).json(updatedRecipe);
-    } catch (error) {
-        res.status(404).json({ error: error.message });      
-    }
-});
-
-module.exports = router;
+module.exports = recipesRoute;

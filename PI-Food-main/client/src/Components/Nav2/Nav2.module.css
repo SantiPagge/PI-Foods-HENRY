@@ -1,0 +1,70 @@
+.nav {
+    position: relative;
+    /* position: fixed; */
+    margin-left: 2rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    border: 1px solid black;
+    border-radius: 5rem;
+    width: 80rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: space-around;
+    backdrop-filter: blur(3px);
+}
+
+.exitButton {
+    position: absolute;
+    background-color: #c67e45;
+    border-color: #565656;
+    color: black;
+    width: 5rem;
+    height: 2rem;
+    border-radius: .5rem;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+    margin-top: .5rem;
+    margin-left: 72rem;
+    box-shadow: -5px 5px 15px black;
+}
+
+.createRecipeButton {
+    position: absolute;
+    background-color: #c67e45;
+    border-color: #565656;
+    color: black;
+    width: 5rem;
+    height: 2rem;
+    border-radius: .5rem;
+    font-weight: bolder;
+    font-size: .7rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: .5rem;
+    margin-left: 63rem;
+    box-shadow: -5px 5px 15px black;
+}
+
+.homeButton {
+    position: absolute;
+    background-color: #c67e45;
+    border-color: #565656;
+    color: black;
+    width: 5rem;
+    height: 2rem;
+    border-radius: .5rem;
+    font-weight: bolder;
+    font-size: .7rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: .5rem;
+    margin-left: 5rem;
+    box-shadow: -5px 5px 15px black;
+}
+
+.searchBar {
+    position: absolute;
+    margin-left: 15rem;
+    margin-top: .3rem;
+}
