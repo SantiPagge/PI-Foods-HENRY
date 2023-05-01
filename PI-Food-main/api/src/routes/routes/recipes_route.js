@@ -3,15 +3,16 @@ const { queryRecipe, recipeId, postRecipe } = require('../controllers/controller
 const { Recipe, Diets } = require('../../db');
 
 
+
 router.get('/', async (req, res) => {
     const { name } = req.query;
     try {
         if(name){
             const show = await queryRecipe(name)
-            res.status(200).json(show);
+            res.status(200).send(show);
         } else {
             const all = await queryRecipe();
-            res.status(200).json(all)
+            res.status(200).send(all)
         }
     } catch (error) {
         res.status(400).send(error);
