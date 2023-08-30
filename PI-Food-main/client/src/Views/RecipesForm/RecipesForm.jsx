@@ -126,7 +126,7 @@ export const RecipesForm = () => {
             diets: []
         }))
         alert('The recipe has been created.')
-        navigate.push('/home')
+        navigate('/home')
     }
     // console.log(form);
     
