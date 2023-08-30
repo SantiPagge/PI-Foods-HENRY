@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import style from './App.css'
-import { Switch, Route } from 'react-router';
+import { Routes, Route } from 'react-router';
 import { Welcome } from './Views/Welcome/Welcome';
 import { Home } from './Views/Home/Home'
 import { Detail } from './Views/Details/Detail'
@@ -13,12 +13,12 @@ axios.defaults.baseURL = "https://pi-foods-henry-production-053d.up.railway.app"
 function App() {
   return (
     <div className={style.all}>
-        <Switch>
+        <Routes>
           <Route exact path='/' component={Welcome}/>
           <Route exact path='/home' component={Home}/>
           <Route path='/create' component={RecipesForm}/>
           <Route path='/detail/:id' component={Detail}/>
-        </Switch>
+        </Routes>
     </div>
   );
 }
