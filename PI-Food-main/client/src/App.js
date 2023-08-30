@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import style from './App.css'
-import { Route, Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { Welcome } from './Views/Welcome/Welcome';
 import { Home } from './Views/Home/Home'
 import { Detail } from './Views/Details/Detail'
