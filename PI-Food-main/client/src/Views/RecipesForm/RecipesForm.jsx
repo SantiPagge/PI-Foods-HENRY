@@ -4,13 +4,13 @@ import { traerDietas } from "../../redux/actions";
 import validations from "./validations";
 import axios from "axios";
 import style from '../RecipesForm/RecipesForm.module.css'
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Nav2 } from "../../Components/Nav2/Nav2";
 
 export const RecipesForm = () => {
     
     const dispatch = useDispatch()
-    const history = useHistory()
+    const navigate = useNavigate()
 
     useEffect(() =>{
         dispatch(traerDietas())
@@ -126,7 +126,7 @@ export const RecipesForm = () => {
             diets: []
         }))
         alert('The recipe has been created.')
-        history.push('/home')
+        navigate.push('/home')
     }
     // console.log(form);
     
